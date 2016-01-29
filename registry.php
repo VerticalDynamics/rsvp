@@ -1,13 +1,15 @@
-<?php require_once 'header.php';?>
+<?php require_once 'partials/header.php';?>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Wedding Registry</title>
+		<title>Natalie + Nic | Wedding Registry</title>
+    <?php require_once 'partials/doc_header.php';?>
 	</head>
 	<body>
-		<?php require_once 'menu.php'; ?>
+		<?php require_once 'partials/menu.php'; ?>
 		<div class="center">
 			<h2>Wedding Registry</h2>
 		</div>
-		<?php require_once 'footer.php';?>
+		<?php require_once 'partials/footer.php';?>
 	</body>
 </html>

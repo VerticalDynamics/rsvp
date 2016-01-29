@@ -1,14 +1,16 @@
-<?php require_once 'header.php';?>
+<?php require_once 'partials/header.php';?>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Out of Town Accommodations</title>
+		<title>Natalie + Nic | Out of Town Accommodations</title>
+    <?php require_once 'partials/doc_header.php';?>
 	</head>
 	<body>
-		<?php require_once 'menu.php'; ?>
+		<?php require_once 'partials/menu.php'; ?>
 		<div class="center">
 			<h2>Windsor, Ontario is the place to be.</h2>
 			<h2>August 27, 2016 is the date to be there!</h2>
 		</div>
-		<?php require_once 'footer.php';?>
+		<?php require_once 'partials/footer.php';?>
 	</body>
 </html>

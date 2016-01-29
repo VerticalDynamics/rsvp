@@ -1,5 +1,5 @@
-<?php 
-require_once 'header.php';
+<?php
+require_once 'partials/header.php';
 $guestname = $_SESSION['guestname'];
 $guestid = $_SESSION['guestid'];
 $isconfirmed = $_SESSION['isconfirmed'];
@@ -11,30 +11,35 @@ if($isconfirmed)
 //assumes groups of max 10 therefore no need for paging results
 $GUEST_MAX = 10;
 ?>
+<!DOCTYPE html>
 <html>
-	<body>			
-		<?php require_once 'menu.php'; ?>
+  <head>
+    <title>Natalie + Nic | RSVP Start</title>
+    <?php require_once 'partials/doc_header.php';?>
+  </head>
+	<body>
+		<?php require_once 'partials/menu.php'; ?>
 		<h1><?php echo "Welcome, " . $guestname . "!" ?></h1>
-		<h2>Please RSVP for each member of your group: </h2>		
-		<form class="rsvp" action="rsvp_confirm.php" method="post">		
-<?php 
-require_once 'db.php';
+		<h2>Please RSVP for each member of your group: </h2>
+		<form class="rsvp" action="rsvp_confirm.php" method="post">
+<?php
+require_once 'util/db.php';
 
 $db = new Database();
 
-try {   
-	$conn = $db->openDB();             
+try {
+	$conn = $db->openDB();
 	//TODO: make it so you are at top of guest list and not included in query return, will need your guest id to be returned
-	//TODO make select * only the required fields, not everything in the row 
+	//TODO make select * only the required fields, not everything in the row
 	$query = "SELECT * FROM guest WHERE guest.groupname = (SELECT guest.groupname FROM guest WHERE guest.guestid = :guestid LIMIT 1) ORDER BY guest.guestname";
-	
+
 	$stmt = $conn->prepare($query);
 	$stmt->bindParam(':guestid', $guestid);
-	$stmt->execute();		
+	$stmt->execute();
 	$row = $stmt->fetch();
 	$guestcount = 0;
-	
-	while($row && $guestcount <= $GUEST_MAX) 
+
+	while($row && $guestcount <= $GUEST_MAX)
 	{
 		//TODO do data validation to make sure no fields were missed, put little red stars to say it's a required field
 		$guestcount++;
@@ -48,9 +53,9 @@ try {
 		Meal: <input type = \"radio\" name=\"meal[". $row['guestid'] ."]\" value=\"Beef\"> Beef
 		<input type = \"radio\" name=\"meal[". $row['guestid'] ."]\" value=\"Chicken\"> Chicken
 		<input type = \"radio\" name=\"meal[". $row['guestid'] ."]\" value=\"Salmon\"> Salmon
-		<input type = \"radio\" name=\"meal[". $row['guestid'] ."]\" value=\"Vegetarian\"> Vegetarian		
+		<input type = \"radio\" name=\"meal[". $row['guestid'] ."]\" value=\"Vegetarian\"> Vegetarian
 		<br/>");
-		
+
 		if ($row['isallowedplusone'] == 1)
 		{
 			print("And will " . $row['guestname'] . " be bringing a plus one? <input type=\"radio\" name=\"isplusoneattending[" . $row['guestid'] ."]\" value=\"yes\"> Yes <input type=\"radio\" name=\"isplusoneattending[" . $row['guestid'] ."]\" value=\"no\"> No ");
@@ -65,11 +70,11 @@ try {
 			print("<br><input type=\"hidden\" name=\"isplusoneattending[" . $row['guestid'] ."]\" value=\"no\">");
 			print("<br><input type=\"hidden\" name=\"plusonemeal[" . $row['guestid'] ."]\" value=\"\">");
 		}
-		
+
 		$row = $stmt->fetch();
 	}
-} 
-catch(PDOException $e) 
+}
+catch(PDOException $e)
 {
     echo 'ERROR: ' . $e->getMessage();
 }
@@ -78,6 +83,6 @@ $db->closeDB();
 			<br>
 			<input type="submit" value="Submit The RSVP For Myself And The Entire Group">
 		</form>
-		<?php require_once 'footer.php';?>
+		<?php require_once 'partials/footer.php';?>
 	</body>
 </html>

@@ -1,7 +1,7 @@
-<?php 
+<?php
 //This page comes after the rsvp_group page to confirm and validate the data submitted from the rsvp_group page
-require_once 'header.php';
-require_once 'db.php';
+require_once 'partials/header.php';
+require_once 'util/db.php';
 
 // if group has already RSVP'ed, redirect
 $isconfirmed = $_SESSION['isconfirmed'];
@@ -14,13 +14,13 @@ else
 	$db = new Database();
 	$conn = $db->openDB();
 	$query = "update guest set isattending = :isattending, meal = :meal, datemodified = now(), isplusoneattending = :isplusoneattending, plusonemeal = :plusonemeal where guestid = :guestid;";
-	
+
 	foreach ($_POST['isattending'] as $guestid => $isattending)
 	{
 		$isattending = $_POST['isattending'][$guestid] == 'yes' ? 'y' : 'n' ;
 		$meal = $_POST['meal'][$guestid];
 		$isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
-		$plusonemeal = $_POST['plusonemeal'][$guestid]; 		
+		$plusonemeal = $_POST['plusonemeal'][$guestid];
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':isattending', $isattending);
 		$stmt->bindParam(':meal', $meal);
@@ -33,9 +33,14 @@ else
 }
 $hasatleastoneplusone = false;
 ?>
+<!DOCTYPE html>
 <html>
-	<body>		
-		<?php require_once 'menu.php'; ?>
+  <head>
+    <title>Natalie + Nic | RSVP Confirmation</title>
+    <?php require_once 'partials/doc_header.php';?>
+  </head>
+	<body>
+		<?php require_once 'partials/menu.php'; ?>
 		<h1>Is the Information Below Correct?</h1>
 		<h2>Please confirm your RSVP selections for your group.</h2>
 		<h2>When ready, please press the CONFIRM RSVP button at the bottom of the page.</h2>
@@ -53,22 +58,22 @@ $hasatleastoneplusone = false;
 			<tr>
 				<td>
 					Attending?
-				</td>	
+				</td>
 				<?php foreach($_POST['isattending'] as $guestid => $isattendingresponse):?>
 				<td>
 					<?php echo $isattendingresponse; ?>
 				</td>
-				<?php endforeach;?>	
+				<?php endforeach;?>
 			</tr>
 			<tr>
 				<td>
 					Meal:
-				</td>	
+				</td>
 				<?php foreach($_POST['meal'] as $guestid => $mealselection):?>
 				<td>
 					<?php echo $mealselection; ?>
 				</td>
-				<?php endforeach;?>	
+				<?php endforeach;?>
 			</tr>
 			<tr>
 				<td>
@@ -76,12 +81,12 @@ $hasatleastoneplusone = false;
 				</td>
 				<?php foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):?>
 				<td>
-					<?php 
-					echo $hasplusone; 
+					<?php
+					echo $hasplusone;
 					$hasatleastoneplusone |= ($hasplusone == "yes"); //to hide the next section if no one in the group is taking a plus one
 					?>
 				</td>
-				<?php endforeach;?>	
+				<?php endforeach;?>
 			</tr>
 			<?php if ($hasatleastoneplusone):?>
 			<tr>
@@ -92,7 +97,7 @@ $hasatleastoneplusone = false;
 				<td>
 					<?php echo $plusonemeal != ''? $plusonemeal : "(none selected)"; ?>
 				</td>
-				<?php endforeach;?>	
+				<?php endforeach;?>
 			</tr>
 			<?php endif; ?>
 		</table>
@@ -102,6 +107,6 @@ $hasatleastoneplusone = false;
 		<form action="rsvp_complete.php" method="post">
 			<input type="submit" value="CONFIRM RSVP">
 		</form>
-		<?php require_once 'footer.php';?>
+		<?php require_once 'partials/footer.php';?>
 	</body>
 </html>
