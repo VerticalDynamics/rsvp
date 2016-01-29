@@ -1,0 +1,9 @@
+{
+  "name": "rsvp",
+  "version": "1.0.0",
+  "description": "Natalie + Nic's Wedding",
+  "main": "index.php",
+  "dependencies": {
+    "skeleton-css": "^2.0.4"
+  }
+}
