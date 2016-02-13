@@ -5,6 +5,8 @@ const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
 const autoprefixer = require('gulp-autoprefixer');
+const connect = require('gulp-connect-php');
+const browserSync = require('browser-sync').create();
 
 const tasks = [
   'normalize',
@@ -22,7 +24,8 @@ gulp.task('sass', () => {
       browsers: ['last 3 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('static/css'));
+    .pipe(gulp.dest('static/css'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('normalize', () => {
@@ -40,5 +43,15 @@ gulp.task('skeleton-css', () => {
 gulp.task('default', tasks);
 
 gulp.task('watch', tasks, () => {
-  gulp.watch(['sass/**/*.scss'], ['sass']);
+  connect.server({
+    port: '8000'
+  }, () => {
+    browserSync.init({
+      proxy: '127.0.0.1:8000',
+      port: 1337
+    });
+  });
+
+  gulp.watch('sass/**/*.scss', ['sass']);
+  gulp.watch('**/*.php').on('change', browserSync.reload)
 });
