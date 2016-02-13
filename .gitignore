@@ -1,4 +1,8 @@
 node_modules
 npm-debug.log
 Thumbs.db
+
 private
+static/img/originals
+static/css
+util/db.php
