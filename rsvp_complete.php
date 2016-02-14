@@ -58,13 +58,13 @@ require_once 'util/db.php';
 
     <p>Your RSVP has been received and is now locked.</p>
 
-	   <p>If you need to change your selection, please email <a href="mailto:nkoutros@googlemail.com">nkoutros@googlemail.com</a> for assistance.<p>
+    <p>If you need to change your selection, please email <a href="mailto:nkoutros@googlemail.com">nkoutros@googlemail.com</a> for assistance.<p>
 
     <form action="welcome.php" method="post">
-  		<button type="submit">You're Done, Thanks! Return to Main Page</button>
+  		<button type="submit" class="button-primary">You're Done, Thanks! Return to Main Page</button>
   	</form>
   </div>
-  
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>

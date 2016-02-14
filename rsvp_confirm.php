@@ -85,26 +85,36 @@ else
 <?php
     if ($hasatleastoneplusone):?>
   		<tr>
-  			<td><strong>Bringing +1?:</strong></td>
+  			<td><strong>+1 Attending:</strong></td>
 <?php foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):?>
   			<td><?php echo $hasplusone; ?></td>
 <?php endforeach;?>
   		</tr>
   		<tr>
   			<td><strong>+1's Meal:</strong></td>
-<?php foreach($_POST['plusonemeal'] as $guestid => $plusonemeal):?>
-  			<td><?php echo $plusonemeal != ''? $plusonemeal : "(none selected)"; ?></td>
-<?php endforeach;?>
-  		</tr>
+<?php
+  foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):
+    if ($hasplusone == 'yes'):
+?>
+        <td><?php echo $_POST['plusonemeal'][$guestid] ;?></td>
+<?php
+    else:
+?>
+  			<td>&ndash;</td>
+<?php
+    endif;
+  endforeach;
+?>
+      </tr>
 <?php endif;?>
   	</table>
 
     <form action="rsvp_start.php" method="post">
-  		<button type="submit">REDO RSVP</button>
+  		<button type="submit" class="button-secondary">REDO RSVP</button>
   	</form>
 
     <form action="rsvp_complete.php" method="post">
-  		<button type="submit">CONFIRM RSVP</button>
+  		<button type="submit" class="button-primary">CONFIRM RSVP</button>
   	</form>
   </div>
 
