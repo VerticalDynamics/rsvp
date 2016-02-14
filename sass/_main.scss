@@ -23,6 +23,15 @@ textarea {
   }
 }
 
+a {
+  color: $blue;
+
+  &:focus,
+  &:hover {
+    color: $light-blue;
+  }
+}
+
 button,
 input[type="button"],
 input[type="submit"] {
@@ -64,6 +73,12 @@ input[type="submit"] {
 }
 .blue {
   color: $blue;
+}
+
+@media (min-width: $m-desktop) {
+  .visible-mobile {
+    display: none !important;
+  }
 }
 
 //
