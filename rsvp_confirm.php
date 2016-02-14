@@ -43,6 +43,7 @@ else
 <body id="rsvp-confirm">
   <div id="main" class="container">
   	<?php require_once 'partials/menu.php'; ?>
+
   	<h1>Is the Information Below Correct?</h1>
   	<h2>Please confirm your RSVP selections for your group.</h2>
   	<h2>When ready, please press the CONFIRM RSVP button at the bottom of the page.</h2>
@@ -58,20 +59,28 @@ else
 		    <tr>
   			  <td><strong>Attending:</strong></td>
 <?php
-  if ( $_POST['isattending']):
-    foreach($_POST['isattending'] as $guestid => $isattendingresponse):
+  foreach($_POST['isattending'] as $guestid => $isattendingresponse):
 ?>
           <td><?php echo $isattendingresponse; ?></td>
 <?php
-    endforeach;
-  endif;
+  endforeach;
 ?>
   		  </tr>
 		    <tr>
           <td><strong>Meal:</strong></td>
-<?php foreach($_POST['meal'] as $guestid => $mealselection):?>
-          <td><?php echo $mealselection; ?></td>
-<?php endforeach;?>
+<?php
+  foreach ($_POST['isattending'] as $guestid => $isattendingresponse):
+    if ($isattendingresponse == 'yes'):
+?>
+          <td><?php echo $_POST['meal'][$guestid] ;?></td>
+<?php
+    else:
+?>
+          <td>&ndash;</td>
+<?php
+    endif;
+  endforeach;
+?>
   		  </tr>
 <?php
     if ($hasatleastoneplusone):?>
@@ -98,6 +107,7 @@ else
   		<button type="submit">CONFIRM RSVP</button>
   	</form>
   </div>
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>

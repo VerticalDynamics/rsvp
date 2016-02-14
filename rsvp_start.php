@@ -21,8 +21,10 @@ $GUEST_MAX = 10;
 <body id="rsvp-start">
   <div id="main" class="container">
   	<?php require_once 'partials/menu.php'; ?>
+
   	<h1>Welcome, <?php echo $guestname ?>!</h1>
   	<h2>Please RSVP for each member of your group: </h2>
+
   	<form class="rsvp" action="rsvp_confirm.php" method="post" autocomplete="off">
 <?php
 require_once 'util/db.php';
@@ -43,9 +45,7 @@ try {
   <ol>
 <?php
 	while($row && $guestcount <= $GUEST_MAX) {
-		//TODO do data validation to make sure no fields were missed, put little red stars to say it's a required field
 		$guestcount++;
-		//TODO make it so the meal and plus one prompt only appears after you've selected yes
 		//TODO security: check submission is made on behalf of group and prevent someone who is not logged in on the group from submitting for another group
 		$displayname = ($row['guestname'] == $guestname) ? "you (" . $row['guestname'] . ")" : $row['guestname'];
 ?>
@@ -96,23 +96,25 @@ try {
         No <input type="radio" id="is-plus-one-attending-no-<?=$guestcount ?>" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="no">
       </label>
 
-      <p class="form-text-small">The plue one's meal:</p>
+      <div data-if="isplusoneattending[<?php echo $row['guestid'] ?>] = yes" data-required-fields="plus-one-meal-beef-<?=$guestcount ?>">
+        <p class="form-text-small">The plue one's meal:</p>
 
-      <label for="plus-one-meal-beef-<?=$guestcount ?>">
-        Beef <input type="radio" id="plus-one-meal-beef-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Beef" required>
-      </label>
+        <label for="plus-one-meal-beef-<?=$guestcount ?>">
+          Beef <input type="radio" id="plus-one-meal-beef-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Beef" required>
+        </label>
 
-			<label for="plus-one-meal-chicken-<?=$guestcount ?>">
-        Chicken <input type="radio" id="plus-one-meal-chicken-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Chicken">
-      </label>
+  			<label for="plus-one-meal-chicken-<?=$guestcount ?>">
+          Chicken <input type="radio" id="plus-one-meal-chicken-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Chicken">
+        </label>
 
-			<label for="plus-one-meal-salmon-<?=$guestcount ?>">
-        Salmon <input type="radio" id="plus-one-meal-salmon-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Salmon">
-      </label>
+  			<label for="plus-one-meal-salmon-<?=$guestcount ?>">
+          Salmon <input type="radio" id="plus-one-meal-salmon-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Salmon">
+        </label>
 
-			<label for="plus-one-meal-vegetarian-<?=$guestcount ?>">
-        Vegetarian <input type="radio" id="plus-one-meal-vegetarian-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Vegetarian">
-      </label>
+  			<label for="plus-one-meal-vegetarian-<?=$guestcount ?>">
+          Vegetarian <input type="radio" id="plus-one-meal-vegetarian-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Vegetarian">
+        </label>
+      </div>
 <?php
 		}
 		else
@@ -140,6 +142,7 @@ $db->closeDB();
   		<button type="submit">Submit The RSVP For Myself And The Entire Group</button>
   	</form>
   </div>
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>
