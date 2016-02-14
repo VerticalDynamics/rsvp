@@ -69,6 +69,10 @@ body.is-mobile.open-menu {
     li {
       margin: 0;
 
+      &.is-current-page a {
+        background-color: rgba($pink, 0.5);
+      }
+
       & + li {
         border-top: 1px solid #ddd;
       }
@@ -106,7 +110,12 @@ body.is-mobile.open-menu {
 
       li {
         display: inline-block;
-        margin-right: -4px;
+        // margin-right: -4px;
+
+        &.is-current-page a {
+          background-color: none;
+          border-bottom: 2px solid $blue;
+        }
 
         & + li {
           border-top: none;
