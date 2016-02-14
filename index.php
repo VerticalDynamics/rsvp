@@ -16,7 +16,7 @@ else if ( isset($_SESSION['isLoggedIn']) )
       <h1>Natalie&nbsp;+&nbsp;Nic&rsquo;s Wedding&nbsp;<span class="heart pink">&#9825;</span></h1>
     </div>
 
-    <form class="guest-code-form" name="input" action="util/authentication.php" method="post" autocomplete="off">
+    <form class="guest-code-form" name="input" action="util/authentication.php" method="post">
       <div class="guest-code-container container">
         <p>Please enter your invitation code</p>
 
