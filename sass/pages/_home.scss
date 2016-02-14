@@ -1,0 +1,89 @@
+#home {
+  .splash-header {
+    height: 100vh;
+    background-image: url("../img/home-bg.jpg");
+
+    .container {
+      margin-top: 30px;
+    }
+
+    .heart {
+      font-size: 5rem;
+      font-weight: bold;
+      vertical-align: middle;
+
+      @media (min-width: $m-desktopHD) {
+        font-size: 7rem;
+      }
+    }
+
+    h1 {
+      letter-spacing: .1rem;
+      opacity: 0.85;
+
+      @media (max-width: $m-mobile) {
+        font-size: 3rem;
+      }
+
+      @media (max-width: $m-tablet) and (orientation: landscape) {
+        font-size: 2.75rem;
+      }
+    }
+  }
+
+  .guest-code-form {
+    position: absolute;
+    max-width: 700px;
+    left: 10%;
+    right: 10%;
+    bottom: 20%;
+    margin: 0 auto;
+
+    @media (max-width: $m-tablet) {
+      bottom: 10%;
+    }
+  }
+
+  .guest-code-container {
+    background-color: rgba($pink, 0.65);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+
+    label,
+    input,
+    button {
+      display: inline-block;
+      margin: 0;
+    }
+
+    input {
+      width: 85%;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 85%;
+    }
+
+    @media (min-width: $m-tablet) {
+      padding: 3rem 2rem;
+
+      p {
+        font-size: 1.6rem;
+      }
+
+      input {
+        width: 60%;
+      }
+
+      button {
+        margin-top: 0;
+        width: auto;
+      }
+    }
+  }
+}

@@ -11,14 +11,20 @@ else if ( isset($_SESSION['isLoggedIn']) )
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="home">
-  <div id="main" class="container">
-    <h1>Welcome to Natalie and Nic's Wedding Site!</h1>
-  	<form class="enter" name="input" action="util/authentication.php" method="post">
-      Please enter your code below <i>(you can find it on your invitation)</i>
-      <br>
-      <br>
-  		Code: <input type="password" name="guestpassword"> <input type="submit" value="Login">
-  	</form>
+  <div class="splash-header">
+    <div class="container">
+      <h1>Natalie&nbsp;+&nbsp;Nic&rsquo;s Wedding&nbsp;<span class="heart pink">&#9825;</span></h1>
+    </div>
+
+    <form class="guest-code-form" name="input" action="util/authentication.php" method="post" autocomplete="off">
+      <div class="guest-code-container container">
+        <p>Please enter your invitation code</p>
+
+        <label for="guest-password" class="sr-only">Invitation Code</label>
+        <input type="password" id="guest-password" name="guestpassword" placeholder="Your invitation code" autofocus required>
+        <button type="submit" class="button-primary">Login</button>
+      </div>
+    </form>
   </div>
 	<?php require_once 'partials/footer.php';?>
 </body>
