@@ -81,6 +81,13 @@ input[type="submit"] {
   }
 }
 
+.is-attending {
+  color: $green;
+}
+.is-not-attending {
+  color: $red;
+}
+
 //
 // sections
 //

@@ -42,14 +42,22 @@ require_once 'util/db.php';
 	$stmt->execute();
 
 	$attendance_status_message;
-	while ($row = $stmt->fetch())
+  $attendance_class_name;
+
+  while ($row = $stmt->fetch())
 	{
 		$attendance_status_message =
-			$row['guestname'] . " is" .
+			"is" .
 			($row['isattending'] == "n" ? " not" : "") . " attending" .
-			($row['isplusoneattending'] == 'y' ? " (and will be bringing a guest)." : ".");
+			($row['isplusoneattending'] == 'y' ? " (and will be bringing a guest)." : ".") .
+      ($row['isattending'] == "n" ? " &#10005;" : "&#10003;");
+    $attendance_class_name = ($row['isattending'] == "n" ? 'is-not-attending' : 'is-attending');
 ?>
-      <li><?php echo $attendance_status_message ?></li>
+      <li>
+        <span class="<?=$attendance_class_name?>">
+          <strong><?php echo $row['guestname'];?></strong> <?php echo $attendance_status_message ?>
+        </span>
+      </li>
 <?php
 	}
 	$db->closeDB();
