@@ -1,5 +1,6 @@
 <?php
 require_once 'partials/header.php';
+
 $guestname = $_SESSION['guestname'];
 $guestid = $_SESSION['guestid'];
 $isconfirmed = $_SESSION['isconfirmed'];
@@ -20,9 +21,11 @@ $GUEST_MAX = 10;
 <body id="rsvp-start">
   <div id="main" class="container">
   	<?php require_once 'partials/menu.php'; ?>
+
   	<h1>Welcome, <?php echo $guestname ?>!</h1>
   	<h2>Please RSVP for each member of your group: </h2>
-  	<form class="rsvp" action="rsvp_confirm.php" method="post">
+
+  	<form class="rsvp" action="rsvp_confirm.php" method="post" autocomplete="off">
 <?php
 require_once 'util/db.php';
 
@@ -39,43 +42,92 @@ try {
 	$row = $stmt->fetch();
 	$guestcount = 0;
 ?>
+  <ol>
 <?php
 	while($row && $guestcount <= $GUEST_MAX) {
-		//TODO do data validation to make sure no fields were missed, put little red stars to say it's a required field
 		$guestcount++;
-		//TODO make it so the meal and plus one prompt only appears after you've selected yes
 		//TODO security: check submission is made on behalf of group and prevent someone who is not logged in on the group from submitting for another group
 		$displayname = ($row['guestname'] == $guestname) ? "you (" . $row['guestname'] . ")" : $row['guestname'];
-?>	
-	<span class="bold"> <?php echo $guestcount ?>. </span>
-	Will <?php echo $displayname ?> be attending the <a href="details.php">wedding reception</a>? <input type="radio" name="isattending[<?php echo $row['guestid'] ?>]" value="yes"> Yes <input type="radio" name="isattending[<?php echo $row['guestid'] ?>]" value="no"> No
-	<br>
-	<input type = "hidden" name="guest[<?php echo $row['guestid'] ?>]" value="<?php echo $row['guestname'] ?>">
-	Meal: <input type = "radio" name="meal[<?php echo $row['guestid'] ?>]" value="Beef"> Beef
-		<input type = "radio" name="meal[<?php echo $row['guestid'] ?>]" value="Chicken"> Chicken
-		<input type = "radio" name="meal[<?php echo $row['guestid'] ?>]" value="Salmon"> Salmon
-		<input type = "radio" name="meal[<?php echo $row['guestid'] ?>]" value="Vegetarian"> Vegetarian
-		<br/>
-	<?php
-		if ($row['isallowedplusone'] == 1)
-		{
-	?>
-			And will <?php echo $row['guestname'] ?> be bringing a plus one? <input type="radio" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="yes"> Yes <input type="radio" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="no"> No
-			<br>The plue one's meal: <input type = "radio" name="plusonemeal["<?php echo $row['guestid'] ?>]" value="Beef"> Beef
-			<input type = "radio" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Chicken"> Chicken
-			<input type = "radio" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Salmon"> Salmon
-			<input type = "radio" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Vegetarian"> Vegetarian
-			<br/>
-			<br/>
-	<?php
+?>
+  <li class="question-container">
+    <input type="hidden" name="guest[<?php echo $row['guestid'] ?>]" value="<?php echo $row['guestname'] ?>">
+
+    <p class="form-text">Will <?php echo $displayname ?> be attending the <a href="details.php" target="_blank">wedding reception</a>?</p>
+
+    <div class="question-reply-container">
+      <label for="is-attending-yes-<?=$guestcount ?>">
+        Yes <input type="radio" id="is-attending-yes-<?=$guestcount ?>" name="isattending[<?php echo $row['guestid'] ?>]" value="yes" required>
+      </label>
+
+      <label for="is-attending-no-<?=$guestcount ?>">
+        No <input type="radio" id="is-attending-no-<?=$guestcount ?>" name="isattending[<?php echo $row['guestid'] ?>]" value="no">
+      </label>
+
+      <div data-if="isattending[<?php echo $row['guestid'] ?>] = yes" data-required-fields="meal-beef-<?=$guestcount ?>">
+        <p class="form-text-small">Meal:</p>
+
+        <label for="meal-beef-<?=$guestcount ?>">
+          Beef <input type="radio" id="meal-beef-<?=$guestcount ?>" name="meal[<?php echo $row['guestid'] ?>]" value="Beef">
+        </label>
+
+    		<label for="meal-chicken-<?=$guestcount ?>">
+          Chicken <input type="radio" id="meal-chicken-<?=$guestcount ?>" name="meal[<?php echo $row['guestid'] ?>]" value="Chicken">
+        </label>
+
+    		<label for="meal-salmon-<?=$guestcount ?>">
+          Salmon <input type="radio" id="meal-salmon-<?=$guestcount ?>" name="meal[<?php echo $row['guestid'] ?>]" value="Salmon">
+        </label>
+
+    		<label for="meal-vegetarian-<?=$guestcount ?>">
+          Vegetarian <input type="radio" id="meal-vegetarian-<?=$guestcount ?>" name="meal[<?php echo $row['guestid'] ?>]" value="Vegetarian">
+        </label>
+      </div>
+<?php
+  	if ($row['isallowedplusone'] == 1)
+  	{
+?>
+			<p class="form-text-small">Will <?php echo $row['guestname'] ?> be bringing a plus one?</p>
+
+      <label for="is-plus-one-attending-yes-<?=$guestcount ?>">
+        Yes <input type="radio" id="is-plus-one-attending-yes-<?=$guestcount ?>" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="yes" required>
+      </label>
+
+      <label for="is-plus-one-attending-no-<?=$guestcount ?>">
+        No <input type="radio" id="is-plus-one-attending-no-<?=$guestcount ?>" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="no">
+      </label>
+
+      <div data-if="isplusoneattending[<?php echo $row['guestid'] ?>] = yes" data-required-fields="plus-one-meal-beef-<?=$guestcount ?>">
+        <p class="form-text-small">The plue one's meal:</p>
+
+        <label for="plus-one-meal-beef-<?=$guestcount ?>">
+          Beef <input type="radio" id="plus-one-meal-beef-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Beef" required>
+        </label>
+
+  			<label for="plus-one-meal-chicken-<?=$guestcount ?>">
+          Chicken <input type="radio" id="plus-one-meal-chicken-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Chicken">
+        </label>
+
+  			<label for="plus-one-meal-salmon-<?=$guestcount ?>">
+          Salmon <input type="radio" id="plus-one-meal-salmon-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Salmon">
+        </label>
+
+  			<label for="plus-one-meal-vegetarian-<?=$guestcount ?>">
+          Vegetarian <input type="radio" id="plus-one-meal-vegetarian-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Vegetarian">
+        </label>
+      </div>
+<?php
 		}
 		else
 		{
-	?>
-		<br><input type="hidden" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="no">
-		<br><input type="hidden" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="">
-	<?php
+?>
+    	<input type="hidden" name="isplusoneattending[<?php echo $row['guestid'] ?>]" value="no">
+    	<input type="hidden" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="">
+<?php
 		}
+?>
+    </div>
+  </li>
+<?php
 		$row = $stmt->fetch();
 	}
 }
@@ -85,10 +137,12 @@ catch(PDOException $e)
 }
 $db->closeDB();
 ?>
-  		<br>
-  		<input type="submit" value="Submit The RSVP For Myself And The Entire Group">
+  		</ol>
+
+  		<button type="submit">Submit The RSVP For Myself And The Entire Group</button>
   	</form>
   </div>
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>
