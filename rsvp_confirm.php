@@ -1,9 +1,11 @@
 <?php
-//This page comes after the rsvp_group page to confirm and validate the data submitted from the rsvp_group page
+// if no *mandatory* selections were made in rsvp_start, bounce them back (TODO: UI should grey out submit button until selections have been made)
 require_once 'partials/header.php';
 require_once 'util/db.php';
 
-// if group has already RSVP'ed, redirect
+$hasatleastoneplusone = false; // show the +1 section of the table on this page only if any guest has confirmed at least one +1
+
+// if group has already RSVP'ed, redirect to the RSVP completion page
 $isconfirmed = $_SESSION['isconfirmed'];
 if($isconfirmed)
 {
@@ -14,12 +16,12 @@ else
 	$db = new Database();
 	$conn = $db->openDB();
 	$query = "update guest set isattending = :isattending, meal = :meal, datemodified = now(), isplusoneattending = :isplusoneattending, plusonemeal = :plusonemeal where guestid = :guestid;";
-
 	foreach ($_POST['isattending'] as $guestid => $isattending)
 	{
 		$isattending = $_POST['isattending'][$guestid] == 'yes' ? 'y' : 'n' ;
 		$meal = $_POST['meal'][$guestid];
 		$isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
+		$hasatleastoneplusone |= ($isplusoneattending == 'y'); //to hide the +1's Meal section if no one in the group is taking a +1
 		$plusonemeal = $_POST['plusonemeal'][$guestid];
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':isattending', $isattending);
@@ -31,7 +33,6 @@ else
 	}
 	$db->closeDB();
 }
-$hasatleastoneplusone = false;
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,11 +61,17 @@ $hasatleastoneplusone = false;
   			<td>
   				Attending?
   			</td>
-  			<?php foreach($_POST['isattending'] as $guestid => $isattendingresponse):?>
+  			<?php 
+				if ( $_POST['isattending'] )
+				{
+					foreach($_POST['isattending'] as $guestid => $isattendingresponse):
+			?>
   			<td>
   				<?php echo $isattendingresponse; ?>
   			</td>
-  			<?php endforeach;?>
+  			<?php 
+					endforeach;
+				}?>
   		</tr>
   		<tr>
   			<td>
@@ -76,20 +83,19 @@ $hasatleastoneplusone = false;
   			</td>
   			<?php endforeach;?>
   		</tr>
+  		<?php if ($hasatleastoneplusone):?>
   		<tr>
   			<td>
   				Bringing +1?
   			</td>
-  			<?php foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):?>
+  			<?php
+				foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):
+			?>
   			<td>
-  				<?php
-  				echo $hasplusone;
-  				$hasatleastoneplusone |= ($hasplusone == "yes"); //to hide the next section if no one in the group is taking a plus one
-  				?>
+  				<?php echo $hasplusone; ?>
   			</td>
   			<?php endforeach;?>
   		</tr>
-  		<?php if ($hasatleastoneplusone):?>
   		<tr>
   			<td>
   				+1's Meal:
