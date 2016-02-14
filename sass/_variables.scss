@@ -1,3 +1,11 @@
 // colours
 $pink: #E6C7B5;
 $blue: #072B4B;
+$light-blue: lighten($blue, 10%);
+
+// media query breakpoints
+$m-mobile: 400px;
+$m-phablet: 550px;
+$m-tablet: 750px;
+$m-desktop: 1000px;
+$m-desktopHD: 1200px;

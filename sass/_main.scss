@@ -1,0 +1,96 @@
+html {
+  font-size: 65%;
+}
+
+body {
+  background: $pink;
+}
+
+input,
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+select,
+textarea {
+  color: #000;
+
+  &:focus {
+    border-color: $blue;
+  }
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  &.button-primary {
+    background-color: $blue;
+    border-color: $blue;
+
+    &:hover,
+    &:focus {
+      background-color: $light-blue;
+      border-color: $light-blue;
+    }
+  }
+  &, &.button-secondary {
+    border-color: $blue;
+    color: $blue;
+
+    &:hover,
+    &:focus {
+      border-color: $light-blue;
+      color: $light-blue;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.pink {
+  color: $pink;
+}
+.blue {
+  color: $blue;
+}
+
+//
+// sections
+//
+
+.splash-header {
+  position: relative;
+  background-color: darken($pink, 5%);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+  margin: 0 auto;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 1px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  h1 {
+    text-align: left;
+
+    @media (min-width: $m-phablet) {
+      text-align: center;
+    }
+  }
+}
+
+#main {
+  padding: 3rem 0;
+}
