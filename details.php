@@ -6,13 +6,15 @@
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="details">
-	<div id="main" class="container">
-    <?php require_once 'partials/menu.php'; ?>
-  	<div class="center">
-  		<h2>Windsor, Ontario is the place to be.</h2>
-  		<h2>August 27, 2016 is the date to be there!</h2>
-  	</div>
+  <?php require_once 'partials/menu.php'; ?>
+
+  <div class="splash-header">
+    <div class="container">
+      <h2>Windsor, Ontario is the place to be.</h2>
+      <h2>August 27, 2016 is the date to be there!</h2>
+    </div>
   </div>
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>

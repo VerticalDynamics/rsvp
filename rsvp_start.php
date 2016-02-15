@@ -19,9 +19,9 @@ $GUEST_MAX = 10;
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="rsvp-start">
+  <?php require_once 'partials/menu.php'; ?>
+  
   <div id="main" class="container">
-  	<?php require_once 'partials/menu.php'; ?>
-
   	<h1>Welcome, <?php echo $guestname ?>!</h1>
   	<h2>Please RSVP for each member of your group: </h2>
 

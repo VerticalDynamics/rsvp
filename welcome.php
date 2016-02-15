@@ -1,4 +1,8 @@
-<?php require_once 'partials/header.php';?>
+<?php
+  require_once 'partials/header.php';
+
+  $guestname = $_SESSION['guestname'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,13 +10,17 @@
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="welcome">
-  <div id="main" class="container">
-  	<?php require_once 'partials/menu.php'; ?>
-  	<div class="center">
-  		<h2>Windsor, Ontario is the place to be.</h2>
-  		<h2>August 27, 2016 is the date to be there!</h2>
-  	</div>
+  <?php require_once 'partials/menu.php'; ?>
+
+  <div class="splash-header">
+    <div class="container">
+      <h2>Welcome <?=$guestname ?></h2>
+      <h3>Windsor, Ontario August 27, 2016</h3>
+
+      <a href="rsvp_start.php" class="button button-primary">RSVP</a>
+    </div>
   </div>
+
   <?php require_once 'partials/footer.php';?>
 </body>
 </html>

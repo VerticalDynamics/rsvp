@@ -16,12 +16,14 @@
   var isMobileClass = 'is-mobile';
   var openMenuClass = 'open-menu';
 
+  var isMobileBreakpoint = 1050;
+
   var padClassName = function (el) {
     return el.className.length ? ' ' : '';
   };
 
   var detectMobile = function () {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < isMobileBreakpoint) {
       if (body.className.indexOf(isMobileClass) === -1) {
         body.className += padClassName(body) + isMobileClass;
       }

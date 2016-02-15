@@ -9,9 +9,9 @@ require_once 'util/db.php';
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="rsvp-complete">
-  <div id="main" class="container">
-  	<?php require_once 'partials/menu.php'; ?>
+  <?php require_once 'partials/menu.php'; ?>
 
+  <div id="main" class="container">
     <h1>RSVP Submission Complete</h1>
 <?php
   	$isconfirmed = $_SESSION['isconfirmed'];
@@ -67,9 +67,9 @@ require_once 'util/db.php';
     <p>Your RSVP has been received and is now locked.</p>
 
     <p>If you need to change your selection, please email <a href="mailto:nkoutros@googlemail.com">nkoutros@googlemail.com</a> for assistance.<p>
-	
+
     <form method="post">
-  		<button formaction="song_request.php" type="submit" class="button-primary">Pssst... Now's your chance to request a song!</button>
+  		<button formaction="song_request.php" type="submit" class="button-secondary">Pssst... Now's your chance to request a song!</button>
   		<button formaction="welcome.php" type="submit" class="button-primary">You're Done, Thanks! Return to Main Page</button>
   	</form>
   </div>

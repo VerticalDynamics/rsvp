@@ -1,6 +1,7 @@
 // colours
 $pink: #E6C7B5;
 $blue: #072B4B;
+$dark-pink: darken($pink, 10%);
 $light-blue: lighten($blue, 10%);
 
 $red: #c0392b;
@@ -12,3 +13,5 @@ $m-phablet: 550px;
 $m-tablet: 750px;
 $m-desktop: 1000px;
 $m-desktopHD: 1200px;
+
+$m-is-mobile: $m-desktop + 50px;

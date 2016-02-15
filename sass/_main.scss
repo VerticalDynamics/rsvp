@@ -32,6 +32,7 @@ a {
   }
 }
 
+.button,
 button,
 input[type="button"],
 input[type="submit"] {
@@ -75,7 +76,7 @@ input[type="submit"] {
   color: $blue;
 }
 
-@media (min-width: $m-desktop) {
+@media (min-width: $m-is-mobile) {
   .visible-mobile {
     display: none !important;
   }
@@ -115,4 +116,8 @@ input[type="submit"] {
 
 #main {
   padding: 3rem 0;
+
+  @media (max-width: $m-mobile) {
+    padding: 1rem;
+  }
 }
