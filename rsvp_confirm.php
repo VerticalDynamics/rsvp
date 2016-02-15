@@ -41,9 +41,9 @@ else
   <?php require_once 'partials/doc_header.php';?>
 </head>
 <body id="rsvp-confirm">
+  <?php require_once 'partials/menu.php'; ?>
+  
   <div id="main" class="container">
-  	<?php require_once 'partials/menu.php'; ?>
-
   	<h1>Is the Information Below Correct?</h1>
   	<h2>Please confirm your RSVP selections for your group.</h2>
   	<h2>When ready, please press the CONFIRM RSVP button at the bottom of the page.</h2>

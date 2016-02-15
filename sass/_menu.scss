@@ -9,8 +9,9 @@ body.is-mobile.open-menu {
 #mobile-menu {
   padding: 5px;
   width: 50px;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   cursor: pointer;
+  float: left;
 
   .menu-line {
     display: block;
@@ -63,8 +64,8 @@ body.is-mobile.open-menu {
 
   ul {
     list-style: none;
-    width: 75%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0.5rem auto;
 
     li {
       margin: 0;
@@ -92,14 +93,17 @@ body.is-mobile.open-menu {
         background-color: rgba($pink, 0.5);
       }
     }
+
+    @media (min-width: $m-phablet) {
+      width: 75%;
+    }
   }
 
-  @media (min-width: $m-desktop) {
+  @media (min-width: $m-is-mobile) {
     display: block;
     position: static;
     background: none;
     padding: 0;
-    margin-bottom: 1rem;
     overflow: visible;
     transition: none;
 
@@ -129,7 +133,7 @@ body.is-mobile.open-menu {
 
       a {
         display: block;
-        padding: 1rem 2rem;
+        padding: 1rem;
         border-bottom: 2px solid transparent;
 
         &:focus,

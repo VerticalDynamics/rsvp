@@ -1,0 +1,13 @@
+#song-request {
+  @media (max-width: $m-tablet + 50px) {
+    .song-request-column {
+      display: block;
+      width: 100%;
+      margin-left: 0;
+
+      & + .song-request-column {
+        padding-top: 4rem;
+      }
+    }
+  }
+}
