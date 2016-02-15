@@ -98,7 +98,7 @@ try {
         </label>
 
         <div data-if="isplusoneattending[<?php echo $row['guestid'] ?>] = yes" data-required-fields="plus-one-meal-beef-<?=$guestcount ?>">
-          <p class="form-text-small">The plue one's meal:</p>
+          <p class="form-text-small">The plus one's meal:</p>
 
           <label for="plus-one-meal-beef-<?=$guestcount ?>">
             Beef <input type="radio" id="plus-one-meal-beef-<?=$guestcount ?>" name="plusonemeal[<?php echo $row['guestid'] ?>]" value="Beef">

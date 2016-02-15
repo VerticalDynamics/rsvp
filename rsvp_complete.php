@@ -12,7 +12,7 @@ require_once 'util/db.php';
   <div id="main" class="container">
   	<?php require_once 'partials/menu.php'; ?>
 
-    <h1>Submission Complete</h1>
+    <h1>RSVP Submission Complete</h1>
 <?php
   	$isconfirmed = $_SESSION['isconfirmed'];
   	$guestid = $_SESSION['guestid'];
@@ -50,7 +50,7 @@ require_once 'util/db.php';
 			"is" .
 			($row['isattending'] == "n" ? " not" : "") . " attending" .
 			($row['isplusoneattending'] == 'y' ? " (and will be bringing a guest)." : ".") .
-      ($row['isattending'] == "n" ? " &#10005;" : "&#10003;");
+      ($row['isattending'] == "n" ? " &#10005;" : " &#10003;");
     $attendance_class_name = ($row['isattending'] == "n" ? 'is-not-attending' : 'is-attending');
 ?>
       <li>
@@ -67,9 +67,10 @@ require_once 'util/db.php';
     <p>Your RSVP has been received and is now locked.</p>
 
     <p>If you need to change your selection, please email <a href="mailto:nkoutros@googlemail.com">nkoutros@googlemail.com</a> for assistance.<p>
-
-    <form action="welcome.php" method="post">
-  		<button type="submit" class="button-primary">You're Done, Thanks! Return to Main Page</button>
+	
+    <form method="post">
+  		<button formaction="song_request.php" type="submit" class="button-primary">Pssst... Now's your chance to request a song!</button>
+  		<button formaction="welcome.php" type="submit" class="button-primary">You're Done, Thanks! Return to Main Page</button>
   	</form>
   </div>
 
