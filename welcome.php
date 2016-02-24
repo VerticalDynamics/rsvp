@@ -14,10 +14,10 @@
 
   <div class="splash-header">
     <div class="container">
-      <h2>Welcome <?=$guestname ?></h2>
+      <h2>Welcome, <?=$guestname ?></h2>
       <h3>Windsor, Ontario August 27, 2016</h3>
 
-      <a href="rsvp_start.php" class="button button-primary">RSVP</a>
+      <a href="rsvp_start.php" class="button button-primary">RSVP NOW</a>
     </div>
   </div>
 
