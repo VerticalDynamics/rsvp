@@ -10,9 +10,9 @@
   
   <div id="main" class="container">
   	<div class="center">
-  		<h2>Photo Gallery - Share the love!</h2>
-      <h4>Please tag your photos #KoutrosWedding and they'll appear below.</h4>
-  		<h4>(Twitter/Instagram/Google Drive integration)</h4>
+  		<h2>Share the love! &#9825;</h2>
+      <h4>Please tag your photos #KoutrosWedding and they'll appear below in the Photo Gallery.</h4>
+  		<h4>(Twitter/Instagram/Google Drive integration coming soon)</h4>
   	</div>
   	<?php require_once 'partials/footer.php';?>
   </div>

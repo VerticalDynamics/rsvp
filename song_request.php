@@ -13,12 +13,10 @@ require_once 'util/db.php';
 
   <div id="main" class="container">
     <h1>Request A Song</h1>
-    <p>Vote for another person's song request <i>(hover over a song on the list below)</i> or request your own <i>(right-side of the page)</i>.</p>
-    <p><strong>Note:</strong> You may request as many songs as you like but you cannot request any song more than once.</p>
 <?php
 if ($_SESSION['isconfirmed'] != 1)
 { // the song request form appears once the RSVP is completed successfully ?>
-    <p>Before requesting a song, please complete the <a href="rsvp_start.php">RSVP form</a>.</p>
+    <p>Before requesting a song, please complete the <a href="rsvp_start.php">RSVP form</a>. See you on the dancefloor!</p>
 <?php
 }
 else
@@ -28,6 +26,8 @@ else
 	$db = new Database();
   $conn = $db->openDB();
 ?>
+    <p>Vote for another person's song request <i>(hover over a song on the list below)</i> or request your own <i>(right-side of the page)</i>.</p>
+    <p><strong>Note:</strong> You may request as many songs as you like but you cannot request any song more than once.</p>
     <div class="row">
       <div class="eight columns song-request-column">
         <h2>Most Requested Songs So Far...</h2>
