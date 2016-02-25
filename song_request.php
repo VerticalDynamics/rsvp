@@ -42,15 +42,15 @@ else
             <tr>
               <td>
                 <strong>Rank</strong>
-              <td>
+              </td>
               <td>
                 <strong>Song Artist</strong>
-              <td>          
+              </td>          
               <td>
                 <strong>Song Title</strong>
+              </td>
               <td>
-              <td>
-              <td>
+              </td>
             </tr>
 <?php
   $rank = 1;
@@ -60,9 +60,9 @@ else
     $button_id = 'request_button' . $song_request_id;
 ?>
             <tr onmouseover="<?php echo $button_id ?>.style.visibility = 'visible'" onmouseout="<?php echo $button_id ?>.style.visibility = 'hidden'">
-              <td><?php echo $rank++ ?>.<td>
-              <td><?php echo $row['song_artist'] ?><td>          
-              <td><?php echo $row['song_title'] ?><td>
+              <td><?php echo $rank++ ?>.</td>
+              <td><?php echo $row['song_artist'] ?></td>          
+              <td><?php echo $row['song_title'] ?></td>
               <td>
                   <input id="<?php echo $button_id ?>" type="button" value="Request" class="button-primary" style="visibility:hidden" >
                   <input id="song_request_id" type="hidden" value="<?php echo $song_request_id ?>">

@@ -10,8 +10,8 @@
 
   <div class="splash-header">
     <div class="container">
-      <h2>Windsor, Ontario is the place to be.</h2>
-      <h2>August 27, 2016 is the date to be there!</h2>
+      <br>
+      <h2>Not familiar with Windsor? Here's how to get there and where to stay:</h2>
     </div>
   </div>
 
