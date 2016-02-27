@@ -55,7 +55,7 @@ require_once 'util/db.php';
 ?>
       <li>
         <span class="<?=$attendance_class_name?>">
-          <strong><?php echo $row['guestname'];?></strong> <?php echo $attendance_status_message ?>
+          <strong><?=$row['guestname'];?></strong> <?=$attendance_status_message ?>
         </span>
       </li>
 <?php
@@ -65,8 +65,7 @@ require_once 'util/db.php';
     </ul>
 
     <p>Your RSVP has been received and is now locked.</p>
-
-    <p>If you need to change your selection, please email <a href="mailto:nkoutros@googlemail.com">nkoutros@googlemail.com</a> for assistance.<p>
+    <p>For any issues with the RSVP process, or if you need more information, please call Nic (613-618-4474) or Natalie (613-400-6289), or email Nic at <a href="mailto:nkoutros@gmail.com">nkoutros@gmail.com</a><p>
 
     <form method="post">
   		<button formaction="song_request.php" type="submit" class="button-secondary">Pssst... Now's your chance to request a song!</button>

@@ -59,13 +59,13 @@ else
     $song_request_id = $row['song_request_id'];
     $button_id = 'request_button' . $song_request_id;
 ?>
-            <tr onmouseover="<?php echo $button_id ?>.style.visibility = 'visible'" onmouseout="<?php echo $button_id ?>.style.visibility = 'hidden'">
-              <td><?php echo $rank++ ?>.</td>
-              <td><?php echo $row['song_artist'] ?></td>          
-              <td><?php echo $row['song_title'] ?></td>
+            <tr onmouseover="<?=$button_id ?>.style.visibility = 'visible'" onmouseout="<?=$button_id ?>.style.visibility = 'hidden'">
+              <td><?=$rank++ ?>.</td>
+              <td><?=$row['song_artist'] ?></td>          
+              <td><?=$row['song_title'] ?></td>
               <td>
-                  <input id="<?php echo $button_id ?>" type="button" value="Request" class="button-primary" style="visibility:hidden" >
-                  <input id="song_request_id" type="hidden" value="<?php echo $song_request_id ?>">
+                  <input id="<?=$button_id ?>" type="button" value="Request" class="button-primary" style="visibility:hidden" >
+                  <input id="song_request_id" type="hidden" value="<?=$song_request_id ?>">
               </td>
             </tr>
 <?php 
@@ -87,7 +87,7 @@ else
   while ( $row = $stmt->fetch() )
 	{
 ?>
-            <option value="<?php echo $row['guestid']?>"><?php echo $row['guestname']?></option>
+            <option value="<?=$row['guestid']?>"><?=$row['guestname']?></option>
 <?php
 	}
 	$db->closeDB();

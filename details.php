@@ -33,7 +33,7 @@
         <ul>
           <li>Cocktail Hour @ 5:00 pm</li>
           <li>Dinner @ 6:30 pm</li>
-          <li>Cocktail attire <!--(todo: emphasize this point with rectangle solid color background, larger font, different font (cursive?) and color)--></li>
+          <li>Cocktail attire advised for utmost enjoyment<!--(todo: emphasize this point with rectangle solid color background, larger font, different font (cursive?) and color)--></li>
         </ul>
         <div align="center">
           Malden Park Visitors Centre<br>
