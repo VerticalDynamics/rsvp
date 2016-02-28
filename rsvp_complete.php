@@ -12,7 +12,7 @@ require_once 'util/db.php';
   <?php require_once 'partials/menu.php'; ?>
 
   <div id="main" class="container">
-    <h1>RSVP Submission Complete</h1>
+    <h2>RSVP Submission Complete</h2>
 <?php
   	$isconfirmed = $_SESSION['isconfirmed'];
   	$guestid = $_SESSION['guestid'];
@@ -64,13 +64,12 @@ require_once 'util/db.php';
 ?>
     </ul>
 
-    <p>Your RSVP has been received and is now locked.</p>
-    <p>For any issues with the RSVP process, or if you need more information, please call Nic (613-618-4474) or Natalie (613-400-6289), or email Nic at <a href="mailto:nkoutros@gmail.com">nkoutros@gmail.com</a><p>
+    <p class="alert">Your RSVP has been received and is now locked.<br><br>For any issues with the RSVP process, or if you need more information, please call Nic (613-618-4474) or Natalie (613-400-6289), or email Nic at <a href="mailto:nkoutros@gmail.com">nkoutros@gmail.com</a></p>
 
-    <form method="post">
-  		<button formaction="song_request.php" type="submit" class="button-secondary">Pssst... Now's your chance to request a song!</button>
-  		<button formaction="welcome.php" type="submit" class="button-primary">You're Done, Thanks! Return to Main Page</button>
-  	</form>
+    <p>Thank you!</p>
+
+		<a href="song_request.php" class="button button-secondary">Request a song!</a>
+		<a href="welcome.php" class="button button-primary">Go to Main Page</a>
   </div>
 
 	<?php require_once 'partials/footer.php';?>

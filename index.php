@@ -26,6 +26,7 @@ else if ( isset($_SESSION['isLoggedIn']) )
       </div>
     </form>
   </div>
+  
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>

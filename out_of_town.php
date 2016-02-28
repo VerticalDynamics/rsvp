@@ -10,8 +10,8 @@
 
   <div class="splash-header">
     <div class="container">
-      <br>
-      <h2>Not familiar with Windsor? Here's how to get there and where to stay:</h2>
+      <h2>Not familiar with Windsor?</h2>
+      <h3>Here's how to get there and where to stay</h3>
     </div>
   </div>
 

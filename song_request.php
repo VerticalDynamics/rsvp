@@ -26,16 +26,16 @@ else
 	$db = new Database();
   $conn = $db->openDB();
 ?>
-    <p>Vote for another person's song request <i>(hover over a song on the list below)</i> or request your own <i>(right-side of the page)</i>.</p>
+    <p>Vote for another person's song request <em>(hover over a song on the list below)</em> or request your own <em>(right-side of the page)</em>.</p>
     <p><strong>Note:</strong> You may request as many songs as you like but you cannot request any song more than once.</p>
     <div class="row">
       <div class="eight columns song-request-column">
         <h2>Most Requested Songs So Far...</h2>
-<?php 
+<?php
 	$query = "select count(1) as request_count, song_request.* from song_request group by song_artist, song_title order by request_count desc, song_request_id desc limit 20";
 	$stmt = $conn->prepare($query);
 	$stmt->bindParam(':guestid', $guestid);
-	$stmt->execute();  
+	$stmt->execute();
 ?>
         <form action="song_request.php" method="post">
           <table>
@@ -45,7 +45,7 @@ else
               </td>
               <td>
                 <strong>Song Artist</strong>
-              </td>          
+              </td>
               <td>
                 <strong>Song Title</strong>
               </td>
@@ -61,14 +61,14 @@ else
 ?>
             <tr onmouseover="<?=$button_id ?>.style.visibility = 'visible'" onmouseout="<?=$button_id ?>.style.visibility = 'hidden'">
               <td><?=$rank++ ?>.</td>
-              <td><?=$row['song_artist'] ?></td>          
+              <td><?=$row['song_artist'] ?></td>
               <td><?=$row['song_title'] ?></td>
               <td>
                   <input id="<?=$button_id ?>" type="button" value="Request" class="button-primary" style="visibility:hidden" >
                   <input id="song_request_id" type="hidden" value="<?=$song_request_id ?>">
               </td>
             </tr>
-<?php 
+<?php
   }
 ?>
           </table>

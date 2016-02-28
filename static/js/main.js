@@ -11,6 +11,7 @@
   var openMenuButton = document.getElementById('mobile-menu');
   var menuCloseButton = document.getElementById('main-nav-close');
   var ifSections = toArray(document.querySelectorAll('[data-if]'));
+  var tooltips = toArray(document.querySelectorAll('.tooltip'));
 
   var activeNavLinkClass = 'is-current-page';
   var isMobileClass = 'is-mobile';
@@ -99,6 +100,30 @@
     }
   };
 
+  var setupTooltip = function (tooltip, index) {
+    var activeClass = 'is-active';
+    var data = tooltip.dataset.showFor;
+    var targets;
+
+    if (!data) return;
+
+    targets = toArray(document.querySelectorAll('.' + data));
+
+    if (targets.length) {
+      targets.forEach(function (target) {
+        target.addEventListener('focus', function () {
+          if (tooltip.className.indexOf(activeClass) === -1) {
+            tooltip.className += padClassName(tooltip) + activeClass;
+          }
+        });
+
+        target.addEventListener('blur', function () {
+          tooltip.className = tooltip.className.replace(activeClass, '');
+        });
+      });
+    }
+  };
+
   window.addEventListener('resize', detectMobile);
   detectMobile();
 
@@ -128,5 +153,9 @@
 
   if (ifSections.length) {
     ifSections.forEach(setupDataIf);
+  }
+
+  if (tooltips.length) {
+    tooltips.forEach(setupTooltip);
   }
 })();

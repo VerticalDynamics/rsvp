@@ -4,7 +4,7 @@
     <div class="footer-sub-title">
       <span>SAVE THE DATE</span>
       <img class="rings" src="static/img/rings.svg">
-      <time datetime="2016-08-27">AUGUST 27, 2016</time>
+      <time datetime="2016-08-27T14:30">AUGUST 27, 2016</time>
     </div>
   </div>
 </footer>
