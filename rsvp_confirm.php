@@ -40,43 +40,56 @@ else
 <html>
 <head>
   <title>Natalie + Nic | RSVP Confirmation</title>
-  <?php require_once 'partials/doc_header.php';?>
+  <?php require_once 'partials/doc_header.php'; ?>
 </head>
 <body id="rsvp-confirm">
   <?php require_once 'partials/menu.php'; ?>
   <div id="main" class="container">
   	<h2>Confirm Your RSVP</h2>
-  	<p>Is the information below correct?</p>
+
+    <p>Is the information below correct?</p>
+
     <table>
       <tbody>
     		<tr>
     			<td><strong>Name:</strong></td>
-<?php foreach($_POST['guest'] as $guestid => $guestname):?>
-      			<td><?=$guestname; ?></td>
-<?php endforeach;?>
+<?php
+  foreach ($_POST['guest'] as $guestid => $guestname)
+  {
+?>
+    			<td><?=$guestname; ?></td>
+<?php
+  }
+?>
     		</tr>
 		    <tr>
   			  <td><strong>Attending:</strong></td>
 <?php
-  foreach($_POST['isattending'] as $guestid => $isattendingresponse):
+  foreach ($_POST['isattending'] as $guestid => $isattendingresponse)
+  {
 ?>
           <td><?=$isattendingresponse; ?></td>
 <?php
-  endforeach;
+  }
 ?>
   		  </tr>
-<?php 
-if ($ENABLE_MEAL_SELECTION) { ?>
+<?php
+  if ($ENABLE_MEAL_SELECTION)
+  {
+?>
 		    <tr>
           <td><strong>Meal:</strong></td>
 <?php
-  foreach ($_POST['isattending'] as $guestid => $isattendingresponse) {
-    if ($isattendingresponse == 'yes') {
+    foreach ($_POST['isattending'] as $guestid => $isattendingresponse)
+    {
+      if ($isattendingresponse == 'yes')
+      {
 ?>
           <td><?=$_POST['meal'][$guestid] ;?></td>
 <?php
-    } 
-    else {
+      }
+      else
+      {
 ?>
           <td>&ndash;</td>
 <?php
@@ -86,44 +99,55 @@ if ($ENABLE_MEAL_SELECTION) { ?>
 ?>
   		  </tr>
 <?php
-    if ($hasatleastoneplusone):?>
-  		<tr>
-  			<td><strong>+1 Attending:</strong></td>
-<?php foreach($_POST['isplusoneattending'] as $guestid => $hasplusone):?>
-  			<td><?=$hasplusone; ?></td>
-<?php endforeach;?>
-  		</tr>
-<?php 
-if ($ENABLE_MEAL_SELECTION) { ?>      
-  		<tr>
-  			<td><strong>+1's Meal:</strong></td>
-<?php
-  foreach($_POST['isplusoneattending'] as $guestid => $hasplusone) {
-    if ($hasplusone == 'yes') {
+  if ($hasatleastoneplusone)
+  {
 ?>
-        <td><?=$_POST['plusonemeal'][$guestid] ;?></td>
+  		  <tr>
+          <td><strong>+1 Attending:</strong></td>
+<?php
+    foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone)
+    {
+?>
+          <td><?=$hasplusone; ?></td>
 <?php
     }
-    else {
 ?>
-  			<td>&ndash;</td>
+        </tr>
+<?php
+    if ($ENABLE_MEAL_SELECTION)
+    {
+?>
+        <tr>
+          <td><strong>+1's Meal:</strong></td>
+<?php
+      foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone)
+      {
+        if ($hasplusone == 'yes')
+        {
+?>
+          <td><?=$_POST['plusonemeal'][$guestid] ;?></td>
+<?php
+        }
+        else
+        {
+?>
+          <td>&ndash;</td>
+<?php
+        }
+      }
+?>
+        </tr>
 <?php
     }
   }
 ?>
-      </tr>
-<?php
-}
-endif;?>
-  	</table>
+      </tbody>
+    </table>
 
-    <form action="rsvp_start.php" method="post">
-  		<button type="submit" class="button-secondary">REDO RSVP</button>
-  	</form>
-
-    <form action="rsvp_complete.php" method="post">
-  		<button type="submit" class="button-primary">CONFIRM RSVP</button>
-  	</form>
+    <form method="post">
+    	<button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>
+      <button formaction="rsvp_complete.php" type="submit" class="button-primary">CONFIRM RSVP</button>
+    </form>
   </div>
 
 	<?php require_once 'partials/footer.php';?>

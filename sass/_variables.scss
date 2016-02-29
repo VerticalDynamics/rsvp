@@ -1,6 +1,7 @@
 // colours
 $pink: #E6C7B5;
 $blue: #072B4B;
+$light-pink: lighten($pink, 14%);
 $dark-pink: darken($pink, 10%);
 $light-blue: lighten($blue, 10%);
 

@@ -15,7 +15,6 @@
       <li data-page="out-of-town"><a href="out_of_town.php">OUT OF TOWN</a></li>
       <li data-page="rsvp-start rsvp-confirm rsvp-complete"><a href="rsvp_start.php">RSVP</a></li>
       <li data-page="song-request"><a href="song_request.php">REQUEST A SONG</a></li>
-      <!--<li data-page="registry"><a href="registry.php">REGISTRY</a></li>-->
       <li data-page="photos"><a href="photos.php">PHOTOS</a></li>
       <li><a href="logout.php">LOG OUT</a></li>
     </ul>
