@@ -6,6 +6,8 @@
     <div class="menu-line">&nbsp;</div>
   </button>
 
+  <div id="mobile-page-title" class="visible-mobile"></div>
+
   <nav id="main-nav">
     <button type="button" id="main-nav-close" class="visible-mobile" title="Close menu">&#10005;</button>
     <div class="main-nav-title visible-mobile">Menu</div>

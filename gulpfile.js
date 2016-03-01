@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
 const autoprefixer = require('gulp-autoprefixer');
@@ -11,8 +13,19 @@ const browserSync = require('browser-sync').create();
 const tasks = [
   'normalize',
   'skeleton-css',
+  'js',
   'sass'
 ];
+
+gulp.task('js', () => {
+  gulp.src('static/src/main.js')
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('static/js'))
+    .pipe(browserSync.stream());
+});
 
 gulp.task('sass', () => {
   gulp.src('sass/style.scss')
@@ -52,6 +65,7 @@ gulp.task('watch', tasks, () => {
     });
   });
 
+  gulp.watch('static/src/**/*.js', ['js']);
   gulp.watch('sass/**/*.scss', ['sass']);
-  gulp.watch(['**/*.php', '**/*.js']).on('change', browserSync.reload)
+  gulp.watch(['**/*.php', '**/*.js']).on('change', browserSync.reload);
 });

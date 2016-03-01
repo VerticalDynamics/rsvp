@@ -44,7 +44,8 @@ else
 </head>
 <body id="rsvp-confirm">
   <?php require_once 'partials/menu.php'; ?>
-  <div id="main" class="container">
+  <div id="main">
+    <div class="container">
   	<h2>Confirm Your RSVP</h2>
 
     <p>Is the information below correct?</p>
@@ -148,6 +149,7 @@ else
     	<button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>
       <button formaction="rsvp_complete.php" type="submit" class="button-primary">CONFIRM RSVP</button>
     </form>
+  </div>
   </div>
 
 	<?php require_once 'partials/footer.php';?>

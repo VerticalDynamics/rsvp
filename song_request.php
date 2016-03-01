@@ -11,8 +11,9 @@ require_once 'util/db.php';
 <body id="song-request">
   <?php require_once 'partials/menu.php'; ?>
 
-  <div id="main" class="container">
-    <h1>Request A Song</h1>
+  <div id="main">
+    <div class="container">
+    <h2>Request A Song</h2>
 <?php
 if ($_SESSION['isconfirmed'] != 1)
 { // the song request form appears once the RSVP is completed successfully ?>
@@ -27,10 +28,12 @@ else
   $conn = $db->openDB();
 ?>
     <p>Vote for another person's song request <em>(hover over a song on the list below)</em> or request your own <em>(right-side of the page)</em>.</p>
-    <p><strong>Note:</strong> You may request as many songs as you like but you cannot request any song more than once.</p>
+
+    <p><strong>Note:</strong> You may request as many songs as you like but you cannot request a song more than once.</p>
+
     <div class="row">
       <div class="eight columns song-request-column">
-        <h2>Most Requested Songs So Far...</h2>
+        <h3>Most Requested Songs So Far...</h3>
 <?php
 	$query = "select count(1) as request_count, song_request.* from song_request group by song_artist, song_title order by request_count desc, song_request_id desc limit 20";
 	$stmt = $conn->prepare($query);
@@ -102,9 +105,11 @@ else
       </div>
     </div>
   </div>
+  </div>
 <?php
 }
 ?>
+
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>
