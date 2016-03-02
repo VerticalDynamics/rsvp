@@ -26,6 +26,16 @@ body.is-mobile.open-menu {
   }
 }
 
+#mobile-page-title {
+  position: relative;
+  top: 50%;
+  transform: translateY(48%);
+  float: left;
+  margin-left: 1.5rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
 #main-nav {
   display: none;
   position: fixed;

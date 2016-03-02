@@ -22,7 +22,8 @@ $ENABLE_MEAL_SELECTION = $_SESSION['ENABLE_MEAL_SELECTION'];
 <body id="rsvp-start">
   <?php require_once 'partials/menu.php'; ?>
 
-  <div id="main" class="container">
+  <div id="main">
+    <div class="container">
   	<h2><?=$isheadofhousehold ? 'Please RSVP for each member of your group' : 'RSVP now to join the celebration'?></h2>
 
     <p class="alert"><strong>Please Note:</strong> if multiple people in your household or family group received an invitation, someone was (perhaps randomly) designated the head of household or group. When that person logs in to the site, they have the ability to RSVP for the entire group.</p>
@@ -190,6 +191,7 @@ $db->closeDB();
 
   		<button type="submit" class="button-primary"><?=$isheadofhousehold ? 'Submit RSVP For Myself And my group' : 'Submit My RSVP'?></button>
   	</form>
+  </div>
   </div>
 
 	<?php require_once 'partials/footer.php';?>

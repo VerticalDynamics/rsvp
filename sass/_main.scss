@@ -66,6 +66,10 @@ table {
   }
 }
 
+ul {
+  list-style-type: disc;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -97,16 +101,28 @@ table {
   color: $red;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.sub-heading {
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
 //
 // sections
 //
+
+$main-min-height: 80vh;
 
 .splash-header {
   position: relative;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 80vh;
+  min-height: $main-min-height;
   margin: 0 auto;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -126,7 +142,7 @@ table {
     right: 0;
     bottom: 0;
     content: "";
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.35);
 
   }
 
@@ -137,10 +153,16 @@ table {
       text-align: center;
     }
   }
+
+  h2, h3 {
+    text-align: center;
+  }
 }
 
 #main {
-  padding: 3rem 0;
+  min-height: $main-min-height - 20vh;
+  background: lighten($pink, 20%);
+  padding: 3rem;
 
   @media (max-width: $m-mobile) {
     padding: 1rem;

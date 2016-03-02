@@ -5,4 +5,5 @@ Thumbs.db
 private
 static/img/originals
 static/css
+static/js
 util/db.php

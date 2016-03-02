@@ -8,10 +8,13 @@
 <body id="photos">
   <?php require_once 'partials/menu.php'; ?>
 
-  <div id="main" class="container">
-    <h2>Share the love &#9825;</h2>
-    <p>Please tag your photos <strong>#KoutrosWedding</strong> and they'll appear below in the Photo Gallery.</p>
-    <p>(Twitter/Instagram/Google Drive integration coming soon)</p>
+  <div id="main">
+    <div class="container">
+      <h2>Share the love with photos &#9825;</h2>
+      
+      <p>Please tag your photos <strong>#KoutrosWedding</strong> and they'll appear below in the Photo Gallery.</p>
+      <p>(Twitter/Instagram/Google Drive integration coming soon)</p>
+    </div>
   </div>
 
   <?php require_once 'partials/footer.php';?>

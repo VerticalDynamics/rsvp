@@ -11,7 +11,8 @@ require_once 'util/db.php';
 <body id="rsvp-complete">
   <?php require_once 'partials/menu.php'; ?>
 
-  <div id="main" class="container">
+  <div id="main">
+    <div class="container">
     <h2>RSVP Submission Complete</h2>
 <?php
   	$isconfirmed = $_SESSION['isconfirmed'];
@@ -70,6 +71,7 @@ require_once 'util/db.php';
 
 		<a href="song_request.php" class="button button-secondary">Request a song!</a>
 		<a href="welcome.php" class="button button-primary">Go to Main Page</a>
+  </div>
   </div>
 
 	<?php require_once 'partials/footer.php';?>
