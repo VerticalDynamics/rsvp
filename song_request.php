@@ -7,7 +7,7 @@ $db = new Database();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $conn = $db->openDB();
   if ( isset($_POST['song_request_id']) ) {
-    $request_someone_elses_song_query = 
+    $request_someone_elses_song_query =
       'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) SELECT :guestid, song_artist, song_title FROM song_request WHERE song_request_id = :song_request_id';
     $stmt = $conn->prepare($request_someone_elses_song_query);
     $stmt->bindParam(':song_request_id', $_POST['song_request_id']);
@@ -15,11 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
   }
   else if ( isset($_POST['song_requester_id']) ) {
-    $request_your_own_song_query = 'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) VALUES (:song_requester_id, :song_artist, :song_title)';  
+    $request_your_own_song_query = 
+      'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) VALUES (:song_requester_id, :song_artist, :song_title)';
     $stmt = $conn->prepare($request_your_own_song_query);
-    $stmt->bindParam(':song_requester_id', $_POST['song_requester_id']);    
-    $stmt->bindParam(':song_artist', $_POST['song_artist']);    
-    $stmt->bindParam(':song_title', $_POST['song_title']);    
+    $song_artist = $_POST['song_artist']; 
+    $song_title = $_POST['song_title'];
+    $stmt->bindParam(':song_requester_id', $_POST['song_requester_id']);
+    $stmt->bindParam(':song_artist', ucwords(strtolower($song_artist)) );
+    $stmt->bindParam(':song_title', ucwords(strtolower($song_title)) );
     $stmt->execute();
   }
   $db->closeDB();
@@ -50,11 +53,11 @@ else {
   if ($song_requested_successfully) {
 ?>
     <p class="alert" align="center">We successfully received your song request. Thanks!</p>
-<?php 
+<?php
   } else {
 ?>
     <p class="alert"><strong>Note:</strong> You may request as many songs as you like but you cannot request the same song more than once.</p>
-<?php 
+<?php
   }
 ?>
     <div class="row">
