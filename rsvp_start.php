@@ -69,8 +69,8 @@ try {
         No <input type="radio" id="is-attending-no-<?=$guestcount ?>" name="isattending[<?=$row['guestid'] ?>]" value="no">
       </label>
 
-      <p data-if="isattending[<?=$row['guestid'] ?>] = yes" class="is-attending">See you there!</p>
-      <p data-if="isattending[<?=$row['guestid'] ?>] = no">That's too bad...</p>
+      <p data-if="isattending[<?=$row['guestid'] ?>] = yes" class="is-attending">We look forward to seeing you there!</p>
+      <p data-if="isattending[<?=$row['guestid'] ?>] = no">Sorry to hear you cannot attend. We'll miss you!</p>
 
 <?php
     if ($ENABLE_MEAL_SELECTION)

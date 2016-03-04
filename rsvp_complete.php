@@ -65,7 +65,7 @@ require_once 'util/db.php';
 ?>
     </ul>
 
-    <p class="alert">Your RSVP has been received and is now locked.<br><br>For any issues with the RSVP process, or if you need more information, please call Nic (613-618-4474) or Natalie (613-400-6289), or email Nic at <a href="mailto:nkoutros@gmail.com">nkoutros@gmail.com</a></p>
+    <p class="alert" align="center">Your RSVP has been received and is now locked.<br><br>For any issues with the RSVP process, or if you need more information, <br>please call Nic (613-618-4474) or Natalie (613-400-6289), or email Nic at <a href="mailto:nkoutros@gmail.com">nkoutros@gmail.com</a></p>
 
     <p>Thank you!</p>
 

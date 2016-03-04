@@ -15,19 +15,17 @@ require_once 'util/db.php';
     <div class="container">
     <h2>Request a Song &#9834;</h2>
 <?php
-if ($_SESSION['isconfirmed'] != 1)
-{ // the song request form appears once the RSVP is completed successfully ?>
+if ($_SESSION['isconfirmed'] != 1) { // the song request form appears once the RSVP is completed successfully ?>
     <p>Before requesting a song, please complete the <a href="rsvp_start.php">RSVP form</a>. See you on the dancefloor!</p>
 <?php
 }
-else
-{
+else {
   $isconfirmed = $_SESSION['isconfirmed'];
   $guestid = $_SESSION['guestid'];
 	$db = new Database();
   $conn = $db->openDB();
 ?>
-    <p class="alert"><strong>Note:</strong> You may request as many songs as you like but you cannot request a song more than once.</p>
+    <p class="alert"><strong>Note:</strong> You may request as many songs as you like but you cannot request the same song more than once.</p>
 
     <div class="row">
       <div class="four columns song-request-column">
@@ -41,8 +39,7 @@ else
 	$stmt = $conn->prepare($query);
 	$stmt->bindParam(':guestid', $guestid);
 	$stmt->execute();
-  while ( $row = $stmt->fetch() )
-	{
+  while ( $row = $stmt->fetch() ) {
 ?>
             <option value="<?=$row['guestid']?>"><?=$row['guestname']?></option>
 <?php
@@ -60,12 +57,6 @@ else
 
       <div class="eight columns song-request-column">
         <h3>Most requested songs so far</h3>
-<?php
-	$query = "select count(1) as request_count, song_request.* from song_request group by song_artist, song_title order by request_count desc, song_request_id desc limit 20";
-	$stmt = $conn->prepare($query);
-	$stmt->bindParam(':guestid', $guestid);
-	$stmt->execute();
-?>
         <form action="song_request.php" method="post">
           <table id="song-request-form">
             <thead>
@@ -77,9 +68,12 @@ else
             </thead>
             <tbody>
 <?php
+	$query = "select count(1) as request_count, song_request.* from song_request group by song_artist, song_title order by request_count desc, song_request_id desc limit 10";
+	$stmt = $conn->prepare($query);
+	$stmt->bindParam(':guestid', $guestid);
+	$stmt->execute();
   $rank = 1;
-  while ( $row = $stmt->fetch() )
-  {
+  while ( $row = $stmt->fetch() ) {
     $song_request_id = $row['song_request_id'];
     $button_id = 'request_button' . $song_request_id;
 ?>
@@ -100,13 +94,12 @@ else
         </form>
       </div>
 
-    </div>
-  </div>
-  </div>
 <?php
 }
 ?>
-
+    </div>
+  </div>
+  </div>
 	<?php require_once 'partials/footer.php';?>
 </body>
 </html>
