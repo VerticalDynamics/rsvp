@@ -1,5 +1,6 @@
 $darker-pink: darken($dark-pink, 30%);
 $lighter-blue: lighten($light-blue, 70%);
+$middle-blue: darken($lighter-blue, 10%);
 $light-green: lighten($green, 70%);
 
 .alert {
@@ -17,17 +18,26 @@ $light-green: lighten($green, 70%);
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
     border-radius: 0.5rem;
-    border: 0;
+    border: 1px solid $middle-blue;
     background-color: $lighter-blue;
     color: $light-blue;
+    &:before,
     &:after {
       position: absolute;
       content: "";
-      bottom: -0.9rem;
-      left: 2rem;
       width: 0;
       height: 0;
       border-style: solid;
+    }
+    &:before {
+      bottom: -1rem;
+      left: 2rem;
+      border-width: 1.05rem 1.05rem 0 1.05rem;
+      border-color: $middle-blue transparent transparent transparent;
+    }
+    &:after {
+      bottom: -0.9rem;
+      left: 2rem;
       border-width: 1rem 1rem 0 1rem;
       border-color: $lighter-blue transparent transparent transparent;
     }
