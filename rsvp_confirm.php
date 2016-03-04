@@ -8,18 +8,15 @@ $hasatleastoneplusone = false; // show the +1 section of the table on this page 
 
 // if group has already RSVP'ed, redirect to the RSVP completion page
 $isconfirmed = $_SESSION['isconfirmed'];
-if($isconfirmed)
-{
+if($isconfirmed) {
 	header('location:rsvp_complete.php');
 }
-else
-{
+else {
 	$db = new Database();
 	$conn = $db->openDB();
 	$query = "update guest set isattending = :isattending, meal = :meal, datemodified = now(), isplusoneattending = :isplusoneattending, plusonemeal = :plusonemeal where guestid = :guestid;";
   // at the confirmation screen, the RSVP is submitted but the isconfirmed flag is not set - this way if a guest abandons the process at this stage, at least the info is captured and the reason they did not confirm the RSVP can be troubledshooted later
-	foreach ($_POST['isattending'] as $guestid => $isattending)
-	{
+	foreach ($_POST['isattending'] as $guestid => $isattending) {
 		$isattending = $_POST['isattending'][$guestid] == 'yes' ? 'y' : 'n' ;
     $meal = $ENABLE_MEAL_SELECTION ? isset($_POST['meal'][$guestid]) ? $_POST['meal'][$guestid] : '' : '';
 		$isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
@@ -48,15 +45,14 @@ else
     <div class="container">
   	<h2>Confirm Your RSVP</h2>
 
-    <p>Is the information below correct?</p>
+    <p>Is your RSVP information below correct?</p>
 
     <table>
       <tbody>
     		<tr>
     			<td><strong>Name:</strong></td>
 <?php
-  foreach ($_POST['guest'] as $guestid => $guestname)
-  {
+  foreach ($_POST['guest'] as $guestid => $guestname) {
 ?>
     			<td><?=$guestname; ?></td>
 <?php
@@ -66,8 +62,7 @@ else
 		    <tr>
   			  <td><strong>Attending:</strong></td>
 <?php
-  foreach ($_POST['isattending'] as $guestid => $isattendingresponse)
-  {
+  foreach ($_POST['isattending'] as $guestid => $isattendingresponse) {
 ?>
           <td><?=$isattendingresponse; ?></td>
 <?php
@@ -75,39 +70,26 @@ else
 ?>
   		  </tr>
 <?php
-  if ($ENABLE_MEAL_SELECTION)
-  {
+  if ($ENABLE_MEAL_SELECTION) {
 ?>
 		    <tr>
           <td><strong>Meal:</strong></td>
 <?php
-    foreach ($_POST['isattending'] as $guestid => $isattendingresponse)
-    {
-      if ($isattendingresponse == 'yes')
-      {
+    foreach ($_POST['isattending'] as $guestid => $isattendingresponse) {
 ?>
-          <td><?=$_POST['meal'][$guestid] ;?></td>
+          <td><?= ($isattendingresponse == 'yes') ? $_POST['meal'][$guestid] : '&ndash;' ;?></td>
 <?php
-      }
-      else
-      {
-?>
-          <td>&ndash;</td>
-<?php
-      }
     }
   }
 ?>
   		  </tr>
 <?php
-  if ($hasatleastoneplusone)
-  {
+  if ($hasatleastoneplusone) {
 ?>
   		  <tr>
           <td><strong>+1 Attending:</strong></td>
 <?php
-    foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone)
-    {
+    foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone) {
 ?>
           <td><?=$hasplusone; ?></td>
 <?php
@@ -115,26 +97,15 @@ else
 ?>
         </tr>
 <?php
-    if ($ENABLE_MEAL_SELECTION)
-    {
+    if ($ENABLE_MEAL_SELECTION) {
 ?>
         <tr>
           <td><strong>+1's Meal:</strong></td>
 <?php
-      foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone)
-      {
-        if ($hasplusone == 'yes')
-        {
+      foreach ($_POST['isplusoneattending'] as $guestid => $hasplusone) {
 ?>
-          <td><?=$_POST['plusonemeal'][$guestid] ;?></td>
+          <td><?= ($hasplusone == 'yes') ? $_POST['plusonemeal'][$guestid] : '&ndash;' ;?></td>
 <?php
-        }
-        else
-        {
-?>
-          <td>&ndash;</td>
-<?php
-        }
       }
 ?>
         </tr>
@@ -144,8 +115,10 @@ else
 ?>
       </tbody>
     </table>
-
     <form method="post">
+      <h2>Additional Comments</h2>
+      <p> If you or your group members have any accessibility or special needs such as dietary restrictions, please inform us here:</p>
+      <input name="additional_comments" type="textarea" style="width: 100%;" maxlength="200" rows="5">
     	<button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>
       <button formaction="rsvp_complete.php" type="submit" class="button-primary">CONFIRM RSVP</button>
     </form>

@@ -22,8 +22,9 @@
       <p>Sincerely,</p>
 
       <p>Natalie and Nic</p> -->
-
+<?php if (!$_SESSION['isconfirmed']) { ?>
       <a href="rsvp_start.php" class="button button-primary">RSVP NOW</a>
+<?php } ?>
     </div>
   </div>
 
