@@ -11,3 +11,25 @@
     }
   }
 }
+
+#song-request-form {
+  .request-button {
+    visibility: hidden;
+    margin-bottom: 0;
+  }
+  tbody {
+    tr {
+      &:hover,
+      &:focus {
+        background-color: $light-pink;
+        .request-button {
+          visibility: visible;
+        }
+      }
+    }
+  }
+  td {
+    border: 0;
+    padding: 6px 8px;
+  }
+}

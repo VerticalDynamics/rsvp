@@ -6,6 +6,12 @@ body.is-mobile.open-menu {
   }
 }
 
+#mobile-menu,
+#mobile-page-title,
+#main-nav {
+  color: $blue;
+}
+
 #mobile-menu {
   padding: 5px;
   width: 50px;

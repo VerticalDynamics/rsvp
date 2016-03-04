@@ -6,6 +6,13 @@ body {
   background: $pink;
 }
 
+::selection {
+  background: $highlight-blue;
+}
+::-moz-selection {
+  background: $highlight-blue;
+}
+
 input,
 input[type=email],
 input[type=number],
@@ -161,7 +168,7 @@ $main-min-height: 80vh;
 
 #main {
   min-height: $main-min-height - 20vh;
-  background: lighten($pink, 20%);
+  background: lighten($pink, 18%);
   padding: 3rem;
 
   @media (max-width: $m-mobile) {

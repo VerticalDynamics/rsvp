@@ -68,6 +68,10 @@ try {
       <label for="is-attending-no-<?=$guestcount ?>">
         No <input type="radio" id="is-attending-no-<?=$guestcount ?>" name="isattending[<?=$row['guestid'] ?>]" value="no">
       </label>
+
+      <p data-if="isattending[<?=$row['guestid'] ?>] = yes" class="is-attending">See you there!</p>
+      <p data-if="isattending[<?=$row['guestid'] ?>] = no">That's too bad...</p>
+
 <?php
     if ($ENABLE_MEAL_SELECTION)
     {

@@ -42,8 +42,8 @@
   var dataIf = {
     setup: function (section) {
       var condition = {};
-      var data = section.dataset.if;
-      var requiredFields = section.dataset.requiredFields;
+      var data = section.getAttribute('data-if');
+      var requiredFields = section.getAttribute('data-required-fields');
 
       if (!data) return;
 
@@ -52,6 +52,7 @@
 
       if (!condition.value || !condition.targets.length) return;
 
+      section.style.display = 'none';
       dataIf.toggleSection(section, requiredFields, false);
 
       condition.targets.forEach(function (target) {
@@ -76,7 +77,7 @@
       if (show) {
         section.style.display = 'block';
 
-        if (required.length) {
+        if (required && required.length) {
           required.forEach(function(field) {
             field.setAttribute('required', '');
           });
@@ -84,7 +85,7 @@
       } else {
         section.style.display = 'none';
 
-        if (required.length) {
+        if (required && required.length) {
           required.forEach(function(field) {
             field.removeAttribute('required');
           });
@@ -108,7 +109,7 @@
 
   var tooltip = {
     setup: function (element, index) {
-      var data = element.dataset.showFor;
+      var data = element.getAttribute('data-show-for');
       var targets;
 
       if (!data) return;
@@ -151,7 +152,7 @@
 
   if (el.mainNavLinks) {
     toArray(el.mainNavLinks.children).some(function (link) {
-      var linkPage = link.dataset.page;
+      var linkPage = link.getAttribute('data-page');
 
       if (linkPage && linkPage.indexOf(el.body.id) > -1) {
         link.className = classNames.activeNavLink;
