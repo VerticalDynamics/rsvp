@@ -12,10 +12,9 @@
   }
 }
 
-#song-request-form {
-  .request-button {
-    visibility: hidden;
-    margin-bottom: 0;
+#song-request-table {
+  form {
+    margin: 0;
   }
   tbody {
     tr {
@@ -31,5 +30,11 @@
   td {
     border: 0;
     padding: 6px 8px;
+  }
+  .request-button {
+    margin-bottom: 0;
+    @media (min-width: $m-desktopHD) {
+      visibility: hidden;
+    }
   }
 }

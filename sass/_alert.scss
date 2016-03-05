@@ -11,6 +11,12 @@ $light-green: lighten($green, 70%);
   padding: 1rem;
   border-radius: 1rem;
 
+  &.success {
+    color: $green;
+    border-color: $green;
+    background-color: $light-green;
+  }
+
   &.alert-tooltip {
     position: relative;
     display: inline-block;

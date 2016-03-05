@@ -7,23 +7,67 @@
   .details-column {
     min-height: 60rem;
 
-    .details-list {
-      min-height: 7rem;
+    &.with-announcement {
+      border-top-right-radius: 0;
+      &, .info-map {
+        border-bottom-right-radius: 0;
+      }
     }
 
-    .details-list,
-    address {
+    .announcement {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -4.1rem;
+      background-color: $blue;
+      width: 5px;
+      padding: 1rem 2.2rem 1rem 1.5rem;
+      text-transform: uppercase;
+      text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      border-radius: 0 1rem 1rem 0;
+      font-size: 1.5rem;
+
+      & > span + span {
+        display: block;
+        margin-top: 2rem;
+      }
+    }
+
+    .details-list {
+      min-height: 7rem;
       font-size: 1.6rem;
     }
 
-    address {
-      font-style: normal;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    @media (max-width: $m-tablet + 50px) {
+    @media (max-width: $m-tablet) {
       min-height: 0;
+
+      &.with-announcement {
+        margin-top: 7rem !important;
+        border-top-left-radius: 0;
+        &, .info-map {
+          border-bottom-right-radius: 1rem;
+        }
+      }
+
+      .announcement {
+        position: absolute;
+        top: -4.4rem;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: auto;
+        padding: 1rem;
+        word-wrap: normal;
+        overflow-wrap: normal;
+        border-radius: 1rem 1rem 0 0;
+        letter-spacing: 1px;
+
+        & > span + span {
+          display: inline;
+        }
+      }
 
       .details-list {
         min-height: 0;

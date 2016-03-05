@@ -2,4 +2,11 @@
   .splash-header {
     background-image: url('../img/home-bg.jpg');
   }
+
+  .welcome-column {
+    width: auto !important;
+    min-height: 0;
+    background-color: rgba(desaturate($light-blue, 60%), 0.45);
+    font-size: 1.7rem;
+  }
 }
