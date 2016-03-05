@@ -50,6 +50,21 @@ a {
 button,
 input[type="button"],
 input[type="submit"] {
+  &.big {
+    font-size: 1.2rem;
+  }
+  &.button-pink {
+    background-color: $pink;
+    border-color: $pink;
+    text-shadow: none;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+      background-color: $dark-pink;
+      border-color: $dark-pink;
+    }
+  }
   &.button-primary {
     background-color: $blue;
     border-color: $blue;
@@ -74,7 +89,7 @@ input[type="submit"] {
 
 table {
   &, tr, td {
-    border-color: $blue;
+    border-color: #ccc;
   }
 }
 
