@@ -4,7 +4,7 @@ require_once 'util/db.php';
 
 $song_requested_successfully = false;
 $db = new Database();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $conn = $db->openDB();
   if ( isset($_POST['song_request_id']) ) {
     $request_someone_elses_song_query =
@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $request_your_own_song_query =
       'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) VALUES (:song_requester_id, :song_artist, :song_title)';
     $stmt = $conn->prepare($request_your_own_song_query);
-    $song_artist = $_POST['song_artist'];
-    $song_title = $_POST['song_title'];
+    $song_artist = ucwords(strtolower($_POST['song_artist']));
+    $song_title = ucwords(strtolower($_POST['song_title']));
     $stmt->bindParam(':song_requester_id', $_POST['song_requester_id']);
-    $stmt->bindParam(':song_artist', ucwords(strtolower($song_artist)) );
-    $stmt->bindParam(':song_title', ucwords(strtolower($song_title)) );
+    $stmt->bindParam(':song_artist', $song_artist);
+    $stmt->bindParam(':song_title', $song_title);
     $stmt->execute();
   }
   $db->closeDB();

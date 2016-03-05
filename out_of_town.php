@@ -58,10 +58,11 @@
           </ul>
 
           <div class="well">
-            <address>33 Riverside Drive East<br>
-            Windsor, Ontario<br>
-            N9A 2S4<br>
-            <strong>Phone:</strong> (519) 258-7774
+            <address>
+              <strong>Phone:</strong> (519) 258-7774<br>
+              33 Riverside Drive East<br>
+              Windsor, Ontario<br>
+              N9A 2S4<br>
             </address>
           </div>
 

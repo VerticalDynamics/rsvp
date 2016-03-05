@@ -19,18 +19,22 @@ require_once 'util/db.php';
   	$guestid = $_SESSION['guestid'];
   	$db = new Database();
   	$conn = $db->openDB();
-  	if ($isconfirmed == 0 && $guestid != null)
-  	{
-		$query =
-		"set @groupname = (select groupname from guest where guestid = :guestid limit 1);
-		update guest
-		set guest.isconfirmed = 1
-		where guest.groupname = @groupname;";
-		$stmt = $conn->prepare($query);
-		$stmt->bindParam(':guestid', $guestid);
-		$stmt->execute();
-		$_SESSION['isconfirmed'] = 1;
-		$db->closeDB();
+  	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $isconfirmed == 0 && $guestid != null) {
+      $additional_comments = $_POST['additional_comments'];
+      $query =
+        'SET @groupname = (SELECT groupname FROM guest WHERE guestid = :guestid limit 1);
+        UPDATE guest
+        SET isconfirmed = 1
+        WHERE groupname = @groupname;
+        UPDATE guest
+        SET additionalcomments = :additional_comments
+        WHERE guestid = :guestid';
+      $stmt = $conn->prepare($query);
+      $stmt->bindParam(':guestid', $guestid);
+      $stmt->bindParam(':additional_comments', $additional_comments);
+      $stmt->execute();
+      $_SESSION['isconfirmed'] = 1;
+      $db->closeDB();
   	}
 ?>
 	 <p>The following invitees have successfully RSVP'ed:</p>

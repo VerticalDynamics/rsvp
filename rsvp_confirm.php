@@ -14,7 +14,8 @@ if($isconfirmed) {
 else {
 	$db = new Database();
 	$conn = $db->openDB();
-	$query = "update guest set isattending = :isattending, meal = :meal, datemodified = now(), isplusoneattending = :isplusoneattending, plusonemeal = :plusonemeal where guestid = :guestid;";
+	$query =
+		"UPDATE guest SET isattending = :isattending, meal = :meal, datemodified = now(), isplusoneattending = :isplusoneattending, plusonemeal = :plusonemeal, email = :email, address_street = :address_street, address_city = :address_city, address_state = :address_state, address_zip = :address_zip WHERE guestid = :guestid;";
   // at the confirmation screen, the RSVP is submitted but the isconfirmed flag is not set - this way if a guest abandons the process at this stage, at least the info is captured and the reason they did not confirm the RSVP can be troubledshooted later
 	foreach ($_POST['isattending'] as $guestid => $isattending) {
 		$isattending = $_POST['isattending'][$guestid] == 'yes' ? 'y' : 'n' ;
@@ -22,11 +23,21 @@ else {
 		$isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
 		$hasatleastoneplusone |= ($isplusoneattending == 'y'); //to hide the +1's Meal section if no one in the group is taking a +1
 		$plusonemeal = $_POST['plusonemeal'][$guestid];
+		$email = $_POST['email-address'][$guestid];
+		$street = $_POST['mailing-address-street'][$guestid];
+		$city = $_POST['mailing-address-city'][$guestid];
+		$state = $_POST['mailing-address-state'][$guestid];
+		$zip = $_POST['mailing-address-postalcode'][$guestid];
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':isattending', $isattending);
 		$stmt->bindParam(':meal', $meal);
 		$stmt->bindParam(':isplusoneattending', $isplusoneattending);
 		$stmt->bindParam(':plusonemeal', $plusonemeal);
+		$stmt->bindParam(':email', $email);
+		$stmt->bindParam(':address_street', $street);
+		$stmt->bindParam(':address_city', $city);
+		$stmt->bindParam(':address_state', $state);
+		$stmt->bindParam(':address_zip', $zip);
 		$stmt->bindParam(':guestid', $guestid);
 		$stmt->execute();
 	}
@@ -50,7 +61,7 @@ else {
     <table>
       <tbody>
     		<tr>
-    			<td><strong>Name:</strong></td>
+    			<td><strong>Invitee Name:</strong></td>
 <?php
   foreach ($_POST['guest'] as $guestid => $guestname) {
 ?>
@@ -59,7 +70,7 @@ else {
   }
 ?>
     		</tr>
-		    <tr>
+				<tr>
   			  <td><strong>Attending:</strong></td>
 <?php
   foreach ($_POST['isattending'] as $guestid => $isattendingresponse) {
@@ -115,6 +126,31 @@ else {
 ?>
       </tbody>
     </table>
+		<p>Is your contact information below also correct?</p>
+		<table>
+		<?php
+		$contact_info = [
+			'Invitee Name' => 'guest',
+			'E-mail' => 'email-address',
+			'Street' => 'mailing-address-street',
+			'City' => 'mailing-address-city',
+			'State' => 'mailing-address-state',
+			'Postal Code' => 'mailing-address-postalcode',
+		];
+		foreach ($contact_info as $contact_type_label => $contact_type) { ?>
+						<tr>
+		  			  <td><strong><?=$contact_type_label ?>:</strong></td>
+		<?php
+		  foreach ($_POST[$contact_type] as $guestid => $data_value) {
+		?>
+		          <td><?=$data_value ? $data_value : '&ndash;'; ?></td>
+		<?php
+		  }
+		?>
+		  		  </tr>
+		<?php
+			} ?>
+		</table>
     <form method="post">
       <h2>Additional Comments</h2>
       <p> If you or your group members have any accessibility or special needs such as dietary restrictions, please inform us here:</p>
