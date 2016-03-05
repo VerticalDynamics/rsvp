@@ -118,8 +118,12 @@ else {
     <form method="post">
       <h2>Additional Comments</h2>
       <p> If you or your group members have any accessibility or special needs such as dietary restrictions, please inform us here:</p>
-      <input name="additional_comments" type="textarea" style="width: 100%;" maxlength="200" rows="5">
-    	<button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>
+
+      <div class="form-group">
+        <textarea name="additional_comments" maxlength="200" rows="5" placeholder="list any dietary restrictions here"></textarea>
+      </div>
+
+      <button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>
       <button formaction="rsvp_complete.php" type="submit" class="button-primary">CONFIRM RSVP</button>
     </form>
   </div>

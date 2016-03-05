@@ -32,6 +32,11 @@ textarea {
   }
 }
 
+textarea {
+  width: 100%;
+  resize: none;
+}
+
 a {
   color: $blue;
 
@@ -88,6 +93,9 @@ ul {
   border: 0;
 }
 
+.dark-pink {
+  color: $dark-pink;
+}
 .pink {
   color: $pink;
 }
@@ -168,7 +176,7 @@ $main-min-height: 80vh;
 
 #main {
   min-height: $main-min-height - 20vh;
-  background: lighten($pink, 18%);
+  background: $main-bg;
   padding: 3rem;
 
   @media (max-width: $m-mobile) {

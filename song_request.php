@@ -15,10 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
   }
   else if ( isset($_POST['song_requester_id']) ) {
-    $request_your_own_song_query = 
+    $request_your_own_song_query =
       'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) VALUES (:song_requester_id, :song_artist, :song_title)';
     $stmt = $conn->prepare($request_your_own_song_query);
-    $song_artist = $_POST['song_artist']; 
+    $song_artist = $_POST['song_artist'];
     $song_title = $_POST['song_title'];
     $stmt->bindParam(':song_requester_id', $_POST['song_requester_id']);
     $stmt->bindParam(':song_artist', ucwords(strtolower($song_artist)) );
@@ -52,7 +52,7 @@ else {
   $conn = $db->openDB();
   if ($song_requested_successfully) {
 ?>
-    <p class="alert" align="center">We successfully received your song request. Thanks!</p>
+    <p class="alert success text-center">We successfully received your song request. Thanks!</p>
 <?php
   } else {
 ?>
@@ -90,7 +90,7 @@ else {
 
     <div class="eight columns song-request-column">
       <h3>Most requested songs so far</h3>
-      <table id="song-request-form">
+      <table id="song-request-table">
         <thead>
           <tr>
             <th>Rank</th>

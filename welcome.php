@@ -2,6 +2,12 @@
   require_once 'partials/header.php';
 
   $guestname = $_SESSION['guestname'];
+  $greetings = array(
+    "Welcome",
+    "Hello",
+    "Good to see you",
+    "Hey there"
+  );
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,14 +20,13 @@
 
   <div class="splash-header">
     <div class="container text-center">
-      <h2>Welcome, <?=$guestname ?>!</h2>
+      <h2><?=$greetings[array_rand($greetings)] ?>, <?=$guestname ?>!</h2>
 
-      <!-- TODO: style this page -->
-      <!-- <p>Our wedding site will allow you (and the other invitees in your group) to RSVP, get important details on how to attend, and allow everyone to share photos on the day of the wedding. Choose from the menu above to get started!</p>
+      <div class="info-column welcome-column">
+        <p>Follow the menu to RSVP, get important details on how to attend and to view and share photos from the wedding day. We hope to see you soon!</p>
+        <small>&ndash; Natalie and Nic</small>
+      </div>
 
-      <p>Sincerely,</p>
-
-      <p>Natalie and Nic</p> -->
 <?php if (!$_SESSION['isconfirmed']) { ?>
       <a href="rsvp_start.php" class="button button-primary">RSVP NOW</a>
 <?php } ?>
