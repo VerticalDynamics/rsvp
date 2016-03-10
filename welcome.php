@@ -29,7 +29,7 @@
 
 <?php if (!$_SESSION['isconfirmed']) { ?>
       <br>
-      <a href="rsvp_start.php" class="button button-primary">RSVP NOW</a>
+      <a href="rsvp_start.php" class="button button-pink big">RSVP NOW</a>
 <?php } ?>
     </div>
   </div>

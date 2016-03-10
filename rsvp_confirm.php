@@ -157,7 +157,7 @@ else {
 			} ?>
 		</table>
     <form method="post">
-      <h2>Additional Comments</h2>
+      <h3>Additional Comments</h3>
       <p> If you or your group members have any accessibility or special needs such as dietary restrictions, please inform us here:</p>
 
       <div class="form-group">
