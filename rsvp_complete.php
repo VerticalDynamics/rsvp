@@ -20,7 +20,7 @@ require_once 'util/db.php';
   	$db = new Database();
   	$conn = $db->openDB();
   	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $isconfirmed == 0 && $guestid != null) {
-      $additional_comments = $_POST['additional_comments'];
+      $additional_comments = filter_var($_POST['additional_comments'], FILTER_SANITIZE_STRING);
       $query =
         'SET @groupname = (SELECT groupname FROM guest WHERE guestid = :guestid limit 1);
         UPDATE guest

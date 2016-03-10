@@ -20,15 +20,20 @@ else {
 	foreach ($_POST['isattending'] as $guestid => $isattending) {
 		$isattending = $_POST['isattending'][$guestid] == 'yes' ? 'y' : 'n' ;
     $meal = $ENABLE_MEAL_SELECTION ? isset($_POST['meal'][$guestid]) ? $_POST['meal'][$guestid] : '' : '';
-		$isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
-		$hasatleastoneplusone |= ($isplusoneattending == 'y'); //to hide the +1's Meal section if no one in the group is taking a +1
-		$plusonemeal = $_POST['plusonemeal'][$guestid];
-		$email = $_POST['email-address'][$guestid];
-		$street = $_POST['mailing-address-street'][$guestid];
-		$city = $_POST['mailing-address-city'][$guestid];
-		$state = $_POST['mailing-address-state'][$guestid];
-		$zip = $_POST['mailing-address-postalcode'][$guestid];
-		$stmt = $conn->prepare($query);
+		// +1 fields:
+    if (isset($_POST['isplusoneattending']) && isset($_POST['isplusoneattending'][$guestid]) ) {
+      $isplusoneattending = $_POST['isplusoneattending'][$guestid] == 'yes'? 'y' : 'n' ;
+      $hasatleastoneplusone |= ($isplusoneattending == 'y'); //to hide the +1's Meal section if no one in the group is taking a +1
+      $plusonemeal = (isset($_POST['plusonemeal']) && isset($_POST['plusonemeal'][$guestid]) ) ? $_POST['plusonemeal'][$guestid] : '';
+    }
+
+		$email = filter_var($_POST['email-address'][$guestid], FILTER_SANITIZE_EMAIL);
+		$street = filter_var($_POST['mailing-address-street'][$guestid], FILTER_SANITIZE_STRING);
+		$city = filter_var($_POST['mailing-address-city'][$guestid], FILTER_SANITIZE_STRING);
+		$state = filter_var($_POST['mailing-address-state'][$guestid], FILTER_SANITIZE_STRING);
+		$zip = filter_var($_POST['mailing-address-postalcode'][$guestid], FILTER_SANITIZE_STRING);
+		
+    $stmt = $conn->prepare($query);
 		$stmt->bindParam(':isattending', $isattending);
 		$stmt->bindParam(':meal', $meal);
 		$stmt->bindParam(':isplusoneattending', $isplusoneattending);
@@ -143,7 +148,7 @@ else {
 		<?php
 		  foreach ($_POST[$contact_type] as $guestid => $data_value) {
 		?>
-		          <td><?=$data_value ? $data_value : '&ndash;'; ?></td>
+		          <td><?=$data_value ? filter_var($data_value, FILTER_SANITIZE_STRING) : '&ndash;'; ?></td>
 		<?php
 		  }
 		?>

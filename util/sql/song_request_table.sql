@@ -54,3 +54,8 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-02-23 22:04:44
+ALTER TABLE `natalieandnic_com`.`song_request` 
+CHANGE COLUMN `song_artist` `song_artist` VARCHAR(64) NOT NULL,
+CHANGE COLUMN `song_title` `song_title` VARCHAR(64) NOT NULL,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`requested_by_guest_id`, `song_artist`, `song_title`);

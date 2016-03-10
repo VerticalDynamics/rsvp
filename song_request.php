@@ -2,31 +2,41 @@
 require_once 'partials/header.php';
 require_once 'util/db.php';
 
-$song_requested_successfully = false;
+$song_request_successful = false;
+$song_request_error = false;
 $db = new Database();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $conn = $db->openDB();
-  if ( isset($_POST['song_request_id']) ) {
+  $stmt = null;
+  if ( isset($_POST['song_request_id']) ) { // guest requests someone's else's song
     $request_someone_elses_song_query =
-      'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) SELECT :guestid, song_artist, song_title FROM song_request WHERE song_request_id = :song_request_id';
+      'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) SELECT :guestid, song_artist, song_title FROM song_request WHERE song_request_id = :song_request_id limit 1';
     $stmt = $conn->prepare($request_someone_elses_song_query);
     $stmt->bindParam(':song_request_id', $_POST['song_request_id']);
     $stmt->bindParam(':guestid', $_SESSION['guestid']);
-    $stmt->execute();
   }
-  else if ( isset($_POST['song_requester_id']) ) {
+  else if ( isset($_POST['song_requester_id']) ) { // guest requests their own song 
+    $DB_FIELD_CHAR_LIMIT = 64;
     $request_your_own_song_query =
       'INSERT INTO song_request (requested_by_guest_id, song_artist, song_title) VALUES (:song_requester_id, :song_artist, :song_title)';
     $stmt = $conn->prepare($request_your_own_song_query);
-    $song_artist = ucwords(strtolower($_POST['song_artist']));
-    $song_title = ucwords(strtolower($_POST['song_title']));
+    $song_artist = filter_input(INPUT_POST, 'song_artist', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+    $song_artist = ucwords( strtolower( substr($song_artist, 0, $DB_FIELD_CHAR_LIMIT) ) );
+    $song_title = filter_input(INPUT_POST, 'song_title', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+    $song_title = ucwords( strtolower( substr($song_title, 0, $DB_FIELD_CHAR_LIMIT) ) );
     $stmt->bindParam(':song_requester_id', $_POST['song_requester_id']);
     $stmt->bindParam(':song_artist', $song_artist);
     $stmt->bindParam(':song_title', $song_title);
-    $stmt->execute();
   }
+  try {
+    if ($stmt)
+      $stmt->execute();
+  }
+  catch (PDOException $e) { // reject repeat song requests for same song by same guest (primary key is requested_by_guest_id, song_artist, song_title)
+    $song_request_error = true;
+  }  
+  $song_request_successful = true;
   $db->closeDB();
-  $song_requested_successfully = true;
 }
 ?>
 <!DOCTYPE html>
@@ -50,10 +60,15 @@ else {
   $isconfirmed = $_SESSION['isconfirmed'];
   $guestid = $_SESSION['guestid'];
   $conn = $db->openDB();
-  if ($song_requested_successfully) {
+  if ($song_request_error) {
+?>
+    <p class="alert failure text-center">There was error in your song request. Please ensure you're not requesting the same song twice and try again.</p>
+<?php
+  }
+  else if ($song_request_successful) {
 ?>
     <p class="alert success text-center">We successfully received your song request. Thanks!</p>
-<?php
+<?php  
   } else {
 ?>
     <p class="alert"><strong>Note:</strong> You may request as many songs as you like but you cannot request the same song more than once.</p>
@@ -100,7 +115,7 @@ else {
         </thead>
         <tbody>
 <?php
-	$query = "select count(1) as request_count, song_request.* from song_request WHERE requested_by_guest_id <> :guestid GROUP BY song_artist, song_title ORDER BY request_count desc, song_request_id desc limit 10";
+	$query = "select count(1) as request_count, song_request.* from song_request GROUP BY song_artist, song_title ORDER BY request_count desc, song_request_id desc limit 10";
 	$stmt = $conn->prepare($query);
 	$stmt->bindParam(':guestid', $guestid);
 	$stmt->execute();
