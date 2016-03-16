@@ -46,7 +46,7 @@
           </ul>
         </div>
 
-        <div class="six columns out-of-town-column info-column with-map">
+        <div class="six columns out-of-town-column info-column with-map"><!--TODO make left and right columns same height-->
           <h3 class="info-title">Accommodations</h3>
 
           <h4>Recommended Hotel</h4>
@@ -56,14 +56,12 @@
               <a href="http://www.his-windsor.com/" target="_blank">Holiday Inn (Ambassador Bridge)</a>
             </li>
           </ul>
-          <p>A block of rooms will be reserved under Nicholas Koutros</p><!--TODO make columns same height-->
+          <p class="text-center">A block of rooms will be reserved under the name Nicholas Koutros with a special rate of $119 / night</p>
 
           <div class="well">
             <address>
               <strong>Phone:</strong> (519) 966-1200<br>
-              1855 Huron Church Road<br>
-              Windsor, Ontario<br>
-              N9C 2L6<br>
+              1855 Huron Church Road, Windsor ON<br>
             </address>
           </div>
 
