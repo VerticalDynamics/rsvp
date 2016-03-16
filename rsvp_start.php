@@ -58,7 +58,7 @@ try {
   <li class="question-container">
     <input type="hidden" name="guest[<?=$row['guestid'] ?>]" value="<?=$row['guestname'] ?>">
 
-    <p class="form-text">Will <strong class="emphasize"><?=$displayname ?></strong> be attending <a href="details.php" target="_blank">the wedding</a>?</p>
+    <p class="form-text">Will <strong class="emphasize"><?=$displayname ?></strong> be attending <a href="schedule.php" target="_blank">the wedding</a>?</p>
 
     <div class="question-reply-container">
       <label for="is-attending-yes-<?=$guestcount ?>">

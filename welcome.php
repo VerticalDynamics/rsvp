@@ -23,8 +23,7 @@
       <h2><?=$greetings[array_rand($greetings)] ?>, <?=$guestname ?>!</h2>
 
       <div class="info-column welcome-column">
-        <p>Welcome to our wedding site. Use the menu above to get important details on how to attend, RSVP now to tell us you're coming, and, later on, share photos taken on the wedding day. We hope you can join us!</p>
-        <small>&ndash; Natalie + Nic</small>
+        <p>Welcome to our wedding site. Please use the menu above to get details on how to attend, RSVP now to tell us you're coming, and, later on, share photos taken on the wedding day.</p>
       </div>
 
 <?php if (!$_SESSION['isconfirmed']) { ?>

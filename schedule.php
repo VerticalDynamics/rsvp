@@ -1,33 +1,30 @@
 <?php require_once 'partials/header.php';?>
 <!DOCTYPE html>
 <html>
-<head id="details">
-	<title>Natalie + Nic | Wedding Details</title>
+<head id="schedule">
+	<title>Natalie + Nic | Wedding schedule</title>
   <?php require_once 'partials/doc_header.php';?>
 </head>
-<body id="details">
+<body id="schedule">
   <?php require_once 'partials/menu.php'; ?>
 
   <div class="splash-header">
     <div class="container">
       <h2>
-        <strong>Windsor, Ontario</strong>
-        <small> Is&nbsp;the&nbsp;Place&nbsp;to&nbsp;Be</small>
-        <br>
-        <strong><time datetime="2016-08-27T14:30">August 27, 2016</time></strong>
-        <small> Is&nbsp;the&nbsp;Date&nbsp;to&nbsp;Be&nbsp;There</small>
+        <strong>Program of Events</strong><br>
+        <small><time datetime="2016-08-27T14:30">August 27, 2016</time></small>
       </h2>
 
       <div class="row">
-        <div class="six columns details-column info-column with-map">
+        <div class="six columns schedule-column info-column with-map">
           <h3 class="info-title">The Ceremony</h3>
 
-          <ul class="details-list">
+          <ul class="schedule-list">
             <li>Begins @ <time datetime="2016-08-27T14:30">2:30</time>pm</li>
             <li>Ends @ <time datetime="2016-08-27T14:30">3:30</time>pm</li>
           </ul>
 
-          <div class="details-location">
+          <div class="schedule-location">
             <div class="well">
               <address>Holy Cross Greek Orthodox Church<br>
               65 Ellis St E, Windsor ON<br>
@@ -40,7 +37,7 @@
           </div>
         </div>
 
-        <div class="six columns details-column info-column with-map with-announcement">
+        <div class="six columns schedule-column info-column with-map with-announcement">
           <div class="announcement">
             <span>Cocktail</span>
             <span>Attire</span>
@@ -49,12 +46,12 @@
 
           <h3 class="info-title">The Reception</h3>
 
-          <ul class="details-list">
+          <ul class="schedule-list">
             <li>Cocktail Hour @ <time datetime="2016-08-27T17:00">5:30 pm</time></li>
             <li>Dinner @ <time datetime="2016-08-27T18:30">6:30 pm</time></li>
           </ul>
 
-          <div class="details-location">
+          <div class="schedule-location">
             <div class="well">
               <address>Malden Park Visitor Centre<br>
               4200 Malden Road, Windsor ON<br>

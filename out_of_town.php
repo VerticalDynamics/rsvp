@@ -11,7 +11,7 @@
   <div class="splash-header">
     <div class="container">
       <h2>Not Familiar with <strong>Windsor</strong>?</h2>
-      <h3 class="sub-heading">Here's how to get there and where to stay</h3>
+      <h3 class="sub-heading">Here's how to get there and where you can stay</h3>
 
       <div class="row">
         <div class="six columns out-of-town-column info-column">

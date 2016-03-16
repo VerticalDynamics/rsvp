@@ -13,7 +13,7 @@
     <div class="main-nav-title visible-mobile">Menu</div>
     <ul id="main-nav-links">
       <li data-page="welcome"><a href="welcome.php">HOME</a></li>
-      <li data-page="details"><a href="details.php">DETAILS</a></li>
+      <li data-page="schedule"><a href="schedule.php">SCHEDULE</a></li>
       <li data-page="out-of-town"><a href="out_of_town.php">OUT OF TOWN</a></li>
       <li data-page="rsvp-start rsvp-confirm rsvp-complete"><a href="rsvp_start.php">RSVP</a></li>
       <li data-page="song-request"><a href="song_request.php">REQUEST A SONG</a></li>
