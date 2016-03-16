@@ -47,27 +47,28 @@
         </div>
 
         <div class="six columns out-of-town-column info-column with-map">
-          <h3 class="info-title">Accomodation</h3>
+          <h3 class="info-title">Accommodations</h3>
 
           <h4>Recommended Hotel</h4>
 
           <ul>
             <li>
-              <a href="http://www.travelodge.ca/property/travelodge-hotel-windsor-downtown" target="_blank">Travelodge Downtown Windsor</a>
+              <a href="http://www.his-windsor.com/" target="_blank">Holiday Inn (Ambassador Bridge)</a>
             </li>
           </ul>
+          <p>A block of rooms will be reserved under Nicholas Koutros</p><!--TODO make columns same height-->
 
           <div class="well">
             <address>
-              <strong>Phone:</strong> (519) 258-7774<br>
-              33 Riverside Drive East<br>
+              <strong>Phone:</strong> (519) 966-1200<br>
+              1855 Huron Church Road<br>
               Windsor, Ontario<br>
-              N9A 2S4<br>
+              N9C 2L6<br>
             </address>
           </div>
 
           <div class="info-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94444.98414336013!2d-83.08711038645778!3d42.291206840009146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2d1f659a1ac9%3A0x704b162d304d8119!2sTravelodge+Hotel+Downtown+Windsor!5e0!3m2!1sen!2sca!4v1456863296788" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.86509846878!2d-83.0585120492618!3d42.28140294795619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2dbf8112ea19%3A0xe933171b549613f1!2sHoliday+Inn+Hotel+%26+Suites+Windsor+(Ambassador+Bridge)!5e0!3m2!1sen!2sca!4v1458088436548" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>

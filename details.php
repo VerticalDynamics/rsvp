@@ -23,7 +23,8 @@
           <h3 class="info-title">The Ceremony</h3>
 
           <ul class="details-list">
-            <li>Begins at <time datetime="2016-08-27T14:30">2:30</time>pm</li>
+            <li>Begins @ <time datetime="2016-08-27T14:30">2:30</time>pm</li>
+            <li>Ends @ <time datetime="2016-08-27T14:30">3:30</time>pm</li>
           </ul>
 
           <div class="details-location">
@@ -49,19 +50,19 @@
           <h3 class="info-title">The Reception</h3>
 
           <ul class="details-list">
-            <li>Cocktail Hour @ <time datetime="2016-08-27T17:00">5:00 pm</time></li>
+            <li>Cocktail Hour @ <time datetime="2016-08-27T17:00">5:30 pm</time></li>
             <li>Dinner @ <time datetime="2016-08-27T18:30">6:30 pm</time></li>
           </ul>
 
           <div class="details-location">
             <div class="well">
-              <address>Malden Park Visitors Centre<br>
+              <address>Malden Park Visitor Centre<br>
               4200 Malden Road, Windsor ON<br>
               N9E 3P2</address>
             </div>
 
             <div class="info-map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23613.776813464756!2d-83.05857537210989!3d42.28445516135712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2c5c5178bbe3%3A0xa7f4c0bed8815d34!2sMalden+Park+Visitors+Centre!5e0!3m2!1sen!2sca!4v1456433663567" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2952.135626021098!2d-83.06135538462328!3d42.275628148421994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2de8493f55b3%3A0x4feacdddead085f7!2s4200+Malden+Rd%2C+Windsor%2C+ON+N9C%2C+Canada!5e0!3m2!1sen!2sca!4v1458088727715" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
         </div>

@@ -53,7 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h2>Request a Song &#9834;</h2>
 <?php
 if ($_SESSION['isconfirmed'] != 1) { // the song request form appears once the RSVP is completed successfully ?>
-    <p>Before requesting a song, please complete the <a href="rsvp_start.php">RSVP form</a>. See you on the dancefloor!</p>
+    <p>Before requesting a song, please complete the <a href="rsvp_start.php">RSVP form</a>.</p>
+    <p>Once you have RSVP'ed, check back here for the most requested songs, ranked by popularity.<br> Request your own song or one that's already been requested by others.</p>
+    <p>See you on the dancefloor!</p>
 <?php
 }
 else {
@@ -105,6 +107,7 @@ else {
 
     <div class="eight columns song-request-column">
       <h3>Most requested songs so far</h3>
+      <p class="alert">To choose a song that is ranked below, hover over the song and click 'Request'.</p>
       <table id="song-request-table">
         <thead>
           <tr>
@@ -115,7 +118,7 @@ else {
         </thead>
         <tbody>
 <?php
-	$query = "select count(1) as request_count, song_request.* from song_request GROUP BY song_artist, song_title ORDER BY request_count desc, song_request_id desc limit 10";
+	$query = "select count(1) as request_count, song_request.* from song_request GROUP BY song_artist, song_title ORDER BY request_count desc, song_request_id desc limit 20";
 	$stmt = $conn->prepare($query);
 	$stmt->bindParam(':guestid', $guestid);
 	$stmt->execute();
