@@ -8,7 +8,7 @@ const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
 const autoprefixer = require('gulp-autoprefixer');
 const connect = require('gulp-connect-php');
-const browserSync = require('browser-sync').create();
+// const browserSync = require('browser-sync').create();
 
 const tasks = [
   'normalize',
@@ -24,7 +24,7 @@ gulp.task('js', () => {
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('static/js'))
-    .pipe(browserSync.stream());
+    // .pipe(browserSync.stream());
 });
 
 gulp.task('sass', () => {
@@ -38,7 +38,7 @@ gulp.task('sass', () => {
       cascade: false
     }))
     .pipe(gulp.dest('static/css'))
-    .pipe(browserSync.stream());
+    // .pipe(browserSync.stream());
 });
 
 gulp.task('normalize', () => {
@@ -56,16 +56,16 @@ gulp.task('skeleton-css', () => {
 gulp.task('default', tasks);
 
 gulp.task('watch', tasks, () => {
-  connect.server({
-    port: '8000'
-  }, () => {
-    browserSync.init({
-      proxy: '127.0.0.1:8000',
-      port: 1337
-    });
-  });
+  // connect.server({
+  //   port: '8000'
+  // }, () => {
+  //   browserSync.init({
+  //     proxy: '127.0.0.1:8000',
+  //     port: 1337
+  //   });
+  // });
 
   gulp.watch('static/src/**/*.js', ['js']);
   gulp.watch('sass/**/*.scss', ['sass']);
-  gulp.watch(['**/*.php', '**/*.js']).on('change', browserSync.reload);
+  // gulp.watch(['**/*.php', '**/*.js']).on('change', browserSync.reload);
 });
