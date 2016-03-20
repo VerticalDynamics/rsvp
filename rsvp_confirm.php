@@ -158,10 +158,10 @@ else {
 		</table>
     <form method="post">
       <h3>Additional Comments</h3>
-      <p> If you or your group members have any accessibility or special needs such as dietary restrictions, please inform us here:</p>
+      <p> If you or your group members have any accessibility or special needs, such as dietary restrictions, please inform us here:</p>
 
       <div class="form-group">
-        <textarea name="additional_comments" maxlength="200" rows="5" placeholder="list any dietary restrictions here"></textarea>
+        <textarea name="additional_comments" maxlength="200" rows="5" placeholder="list any special needs and/or dietary restrictions here"></textarea>
       </div>
 
       <button formaction="rsvp_start.php" type="submit" class="button-secondary">REDO RSVP</button>

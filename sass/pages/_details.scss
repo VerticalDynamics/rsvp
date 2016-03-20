@@ -1,10 +1,10 @@
-#schedule {
+#details {
   .splash-header {
-    background-image: url('../img/schedule-bg.jpg');
+    background-image: url('../img/details-bg.jpg');
     background-position: center 20%;
   }
 
-  .schedule-column {
+  .details-column {
     min-height: 60rem;
 
     &.with-announcement {
@@ -35,7 +35,7 @@
       }
     }
 
-    .schedule-list {
+    .details-list {
       min-height: 7rem;
       font-size: 1.6rem;
     }
@@ -69,7 +69,7 @@
         }
       }
 
-      .schedule-list {
+      .details-list {
         min-height: 0;
       }
     }

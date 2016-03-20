@@ -58,7 +58,7 @@ try {
   <li class="question-container">
     <input type="hidden" name="guest[<?=$row['guestid'] ?>]" value="<?=$row['guestname'] ?>">
 
-    <p class="form-text">Will <strong class="emphasize"><?=$displayname ?></strong> be attending <a href="schedule.php" target="_blank">the wedding</a>?</p>
+    <p class="form-text">Will <strong class="emphasize"><?=$displayname ?></strong> be attending <a href="details.php" target="_blank">the wedding</a>?</p>
 
     <div class="question-reply-container">
       <label for="is-attending-yes-<?=$guestcount ?>">
@@ -153,7 +153,7 @@ try {
         <div class="tooltip alert alert-tooltip" data-show-for="mailing-address-<?=$guestcount ?>">We kindly ask for your mailing address so that we may show our appreciation for your presence.</div>
 
         <div class="form-group">
-          <label for="mailing-address-street-<?=$guestcount ?>">Street address</label>
+          <label for="mailing-address-street-<?=$guestcount ?>">Street Address</label>
           <input type="text" placeholder="street address" id="mailing-address-street-<?=$guestcount ?>" class="mailing-address-<?=$guestcount ?>" name="mailing-address-street[<?=$row['guestid'] ?>]">
         </div>
 
@@ -168,7 +168,7 @@ try {
         </div>
 
         <div class="form-group">
-          <label for="mailing-address-postalcode-<?=$guestcount ?>">Postal code</label>
+          <label for="mailing-address-postalcode-<?=$guestcount ?>">Postal Code</label>
           <input type="text" placeholder="postal code or ZIP" id="mailing-address-postalcode-<?=$guestcount ?>" class="mailing-address-<?=$guestcount ?>" name="mailing-address-postalcode[<?=$row['guestid'] ?>]">
         </div>
 

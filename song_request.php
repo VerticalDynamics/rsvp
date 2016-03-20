@@ -106,7 +106,7 @@ else {
     </div>
 
     <div class="eight columns song-request-column">
-      <h3>Most requested songs so far</h3>
+      <h3>Most requested songs so far...</h3>
       <p class="alert">To choose a song that is ranked below, hover over the song and click 'Request'.</p>
       <table id="song-request-table">
         <thead>

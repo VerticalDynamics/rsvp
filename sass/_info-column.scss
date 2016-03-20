@@ -16,6 +16,11 @@ $map-height: 30rem;
     padding: 1rem;
     border-radius: 1rem;
 
+    a {
+      color: $blue;
+      font-weight: bold;
+    }
+
     & > * {
       margin: 0
     }

@@ -37,7 +37,7 @@ require_once 'util/db.php';
       $db->closeDB();
   	}
 ?>
-	 <p>The following invitees have successfully RSVP'ed:</p>
+	 <p>The following invitees have successfully RSVP'd:</p>
 
    <ul>
 <?php
@@ -73,7 +73,7 @@ require_once 'util/db.php';
 
     <p>Thank you!</p>
 
-		<a href="song_request.php" class="button button-secondary">Request a song!</a>
+		<a href="song_request.php" class="button button-secondary">Request a Song!</a>
 		<a href="welcome.php" class="button button-primary">Go to Main Page</a>
   </div>
   </div>

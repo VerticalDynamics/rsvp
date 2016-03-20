@@ -1,32 +1,32 @@
 <?php require_once 'partials/header.php';?>
 <!DOCTYPE html>
 <html>
-<head id="schedule">
-	<title>Natalie + Nic | Wedding schedule</title>
+<head id="details">
+	<title>Natalie + Nic | Wedding Details</title>
   <?php require_once 'partials/doc_header.php';?>
 </head>
-<body id="schedule">
+<body id="details">
   <?php require_once 'partials/menu.php'; ?>
 
   <div class="splash-header">
     <div class="container">
       <h2>
         <strong>Program of Events</strong><br>
-        <small><time datetime="2016-08-27T14:30">August 27, 2016</time></small>
+        <small><time datetime="2016-08-27T14:30">Windsor, Ontario <span class="dark-pink">&#9825;</span> August 27, 2016</time></small>
       </h2>
 
       <div class="row">
-        <div class="six columns schedule-column info-column with-map">
+        <div class="six columns details-column info-column with-map">
           <h3 class="info-title">The Ceremony</h3>
 
-          <ul class="schedule-list">
-            <li>Begins @ <time datetime="2016-08-27T14:30">2:30</time>pm</li>
-            <li>Ends @ <time datetime="2016-08-27T14:30">3:30</time>pm</li>
+          <ul class="details-list">
+            <li>Begins @ <time datetime="2016-08-27T14:30">2:30 pm</time></li>
+            <li>Ends @ <time datetime="2016-08-27T14:30">3:30 pm</time></li>
           </ul>
 
-          <div class="schedule-location">
+          <div class="details-location">
             <div class="well">
-              <address>Holy Cross Greek Orthodox Church<br>
+              <address><a href="http://www.gocw.ca/location-and-hours/">Holy Cross Greek Orthodox Church</a><br>
               65 Ellis St E, Windsor ON<br>
               N8X 2G8</address>
             </div>
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="six columns schedule-column info-column with-map with-announcement">
+        <div class="six columns details-column info-column with-map with-announcement">
           <div class="announcement">
             <span>Cocktail</span>
             <span>Attire</span>
@@ -46,14 +46,14 @@
 
           <h3 class="info-title">The Reception</h3>
 
-          <ul class="schedule-list">
+          <ul class="details-list">
             <li>Cocktail Hour @ <time datetime="2016-08-27T17:00">5:30 pm</time></li>
             <li>Dinner @ <time datetime="2016-08-27T18:30">6:30 pm</time></li>
           </ul>
 
-          <div class="schedule-location">
+          <div class="details-location">
             <div class="well">
-              <address>Malden Park Visitor Centre<br>
+              <address><a href="http://www.citywindsor.ca/residents/facilities-for-rent/pages/malden-park-visitor-centre.aspx">Malden Park Visitor Centre</a><br>
               4200 Malden Road, Windsor ON<br>
               N9E 3P2</address>
             </div>

@@ -13,7 +13,9 @@ else if ( isset($_SESSION['isLoggedIn']) )
 <body id="home">
   <div class="splash-header">
     <div class="container">
-      <h1>Natalie&nbsp;+&nbsp;Nic</h1>
+      <h1>
+        Natalie&nbsp;+&nbsp;Nic's Wedding
+      </h1>
     </div>
 
     <form class="guest-code-form" name="input" action="util/authentication.php" method="post">
