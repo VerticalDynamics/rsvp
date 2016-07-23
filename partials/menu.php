@@ -16,7 +16,7 @@
       <li data-page="details"><a href="details.php">DETAILS</a></li>
       <li data-page="out-of-town"><a href="out_of_town.php">OUT OF TOWN</a></li>
       <li data-page="photos"><a href="photos.php">PHOTOS</a></li>
-      <li><a href="../index.php">LOG IN</a></li>
+      <li><a href="authenticated/index.php">LOG IN</a></li>
     </ul>
   </nav>
 </div>
