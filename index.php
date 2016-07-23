@@ -1,34 +1,29 @@
 <?php
-if ( !session_start() )
-  die("Couldn't start session.");
-else if ( isset($_SESSION['isLoggedIn']) )
-	header('location:welcome.php');
+  require_once 'partials/header.php';
+
+  $guestname = 'Wedding Guest';
+  $greetings = array(
+    "Welcome",
+    "Hello",
+    "Good to see you",
+    "Hey there"
+  );
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Natalie + Nic</title>
+	<title>Natalie + Nic | Welcome</title>
   <?php require_once 'partials/doc_header.php';?>
 </head>
-<body id="home">
+<body id="welcome">
+  <?php require_once 'partials/menu.php'; ?>
+
   <div class="splash-header">
-    <div class="container">
-      <h1>
-        Natalie&nbsp;+&nbsp;Nic's Wedding
-      </h1>
+    <div class="container text-center">
+      <h2><?=$greetings[array_rand($greetings)] ?>, <?=$guestname ?>!</h2>
     </div>
-
-    <form class="guest-code-form" name="input" action="util/authentication.php" method="post">
-      <div class="guest-code-container container">
-        <p>Please enter your invitation code</p>
-
-        <label for="guest-password" class="sr-only">Invitation Code</label>
-        <input type="password" id="guest-password" name="guestpassword" placeholder="Your invitation code" autofocus required>
-        <button type="submit" class="button-primary">Login</button>
-      </div>
-    </form>
   </div>
-  
-	<?php require_once 'partials/footer.php';?>
+
+  <?php require_once 'partials/footer.php';?>
 </body>
 </html>
