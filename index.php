@@ -1,14 +1,4 @@
-<?php
-  require_once 'partials/header.php';
-
-  $guestname = 'Wedding Guest';
-  $greetings = array(
-    "Welcome",
-    "Hello",
-    "Good to see you",
-    "Hey there"
-  );
-?>
+<?php require_once 'partials/header.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +10,6 @@
 
   <div class="splash-header">
     <div class="container text-center">
-      <h2><?=$greetings[array_rand($greetings)] ?>, <?=$guestname ?>!</h2>
     </div>
   </div>
 

@@ -47,7 +47,7 @@
           <h3 class="info-title">The Reception</h3>
 
           <ul class="details-list">
-            <li>Cocktail Hour @ <time datetime="2016-08-27T17:00">5:30 pm</time></li>
+            <li>Cocktail Hour @ <time datetime="2016-08-27T17:00"><strike>5:30 pm</strike> <strong>5:00 pm <span style='color:red'>UPDATED</span></strong></time></li>
             <li>Dinner @ <time datetime="2016-08-27T18:30">6:30 pm</time></li>
           </ul>
 
